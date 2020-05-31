@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :end_users
   get 'orders/index'
   get 'orders/new'
   get 'orders/show'
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   get 'end_users/edit'
   get 'homes/top'
   root 'homes#top'
-  devise_for :users
 
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:create, :index, :update, :destroy]
