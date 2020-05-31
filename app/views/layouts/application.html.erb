@@ -10,7 +10,17 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+
+      <%= render 'layouts/header' %>
+
+
+    <div class="container">
+
+      <p id="notice"><%= notice %></p>
+        <!--デバイスでnotice設定されている-->
+      <%= yield %>
+
+    </div>
+
   </body>
 </html>
