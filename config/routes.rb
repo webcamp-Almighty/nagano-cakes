@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'items/index'
+  get 'items/show'
+
+
   devise_for :end_users
+
   get 'orders/index'
   get 'orders/new'
   get 'orders/show'
@@ -30,6 +35,11 @@ Rails.application.routes.draw do
   resource :orders, only: [:index, :show]
 
 #   #管理者
+devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
 # 　namespace :admin do
 # 	#deviseのルーティングは一旦保留
 # 	 #get "/admin/login" => "admin/user_sessions#new"
