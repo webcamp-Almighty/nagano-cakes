@@ -10,20 +10,15 @@ class ApplicationController < ActionController::Base
 		when EndUser
 			root_path
 		end
-		# case resource 
-		# when Admin 
-		#   admins_top_path 
-		# when  EndUser 
-		#   root_path
-		# end
 	end
 
 	def after_sign_out_path_for(resource)
-		# if resource == :admin 
-		#   new_admin_session_path 
-		# else
-		#   new_end_user_session_path 
-		# end 
+		if resource == :admin
+			new_admin_session_path
+		else
+			new_end_user_session_path
+		end
+
 	end
 
 	def configure_permitted_parameters
