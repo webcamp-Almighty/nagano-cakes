@@ -10,9 +10,12 @@
   </head>
 
   <body>
-
+    <!--userとadminとでヘッダーの表示を切り替える-->
+    <% if end_user_signed_in? %>
       <%= render 'layouts/header' %>
-
+    <% else %>
+      <%= render 'layouts/admins_header' %>
+    <% end %>
 
     <div class="container">
 
