@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
-  get 'items/index'
-  get 'items/show'
-
 
   devise_for :end_users
+
+  devise_for :admins, skip: :all
+  devise_scope :admin do
+    get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
+    post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
+    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
+  end
+
+
+  namespace :admins do
+    get 'top' => 'homes#top'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :orders_item, only: [:update]
+  end
+
+
+
+
 
   get 'orders/index'
   get 'orders/new'
@@ -33,26 +51,6 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
 
   resource :orders, only: [:index, :show]
-
-#   #管理者
-devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
-# 　namespace :admin do
-# 	#deviseのルーティングは一旦保留
-# 	 #get "/admin/login" => "admin/user_sessions#new"
-# 	#topページ
-
-# 	resources :items, only: [:index, :new, :create, :show, :edit, :update]
-# 	resources :genres, only: [:create, :index, :edit, :update]
-# 	resources :end_users, only: [:index, :show, :edit, :update]
-# 	resources :orders, only: [:index, :show, :update]
-# 	resources :orders_item, only: [:update]
-#   end
-
-
 
 
 end
