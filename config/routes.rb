@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :genres, only: [:index, :create, :edit, :update]
+
   devise_for :end_users
 
   devise_for :admins, skip: :all

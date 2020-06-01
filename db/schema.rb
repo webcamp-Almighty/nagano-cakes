@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_102708) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_invalid"
+    t.boolean "is_invalid",:boolean, default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
