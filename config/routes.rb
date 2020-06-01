@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #get 'genres/index'
+  resources :genres, only: [:index, :create, :edit, :update]
   devise_for :end_users
   get 'orders/index'
   get 'orders/new'

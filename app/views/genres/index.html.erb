@@ -1,0 +1,43 @@
+<h1>ジャンル一覧・追加</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @genre) do |f| %>
+        <%#= render 'shared/error_messages' %>
+
+        <%= f.label :ジャンル名 %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.radio_button :is_invalid, :"1" %>有効
+        <%= f.radio_button :is_invalid, :"0" %>無効
+
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+
+
+    <div class="col-md-6 col-md-offset-3">
+      <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th>ジャンル名</th>
+          <th>有効/無効</th>
+          <th>編集</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= genre.is_invalid %></td>
+          <td><%= link_to "編集する", edit_genre_path(genre.id), class: "btn btn-primary" %></td>
+          <td><%#= 面白い link_to edit_genre_path(genre.id) %></td>
+        </tr>
+      <% end %>
+      <tbody>
+      </table>
+    </div>
+
+  </div>
