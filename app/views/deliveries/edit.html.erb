@@ -1,2 +1,21 @@
-<h1>Deliveries#edit</h1>
-<p>Find me in app/views/deliveries/edit.html.erb</p>
+<h2>配送先編集</h2>
+<table>
+	<%= form_for @delivery do |f| %>
+	<tr>
+		<th>郵便番号(ハイフンなし)</th>
+		<td colspan="3"><%= f.text_field :postal_code %></td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td colspan="3"><%= f.text_field :address %></td>
+	</tr>
+	<tr>
+		<th>宛名</th>
+		<td colspan="3"><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<th colspan="3"></th>
+		<td><%= f.submit '編集する' %></td>
+	</tr>
+	<% end %>
+</table>
