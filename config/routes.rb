@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resource :end_users, only: [:show, :edit, :update]
+  get '/end_users/confirm' => 'end_users#confirm'
+  patch '/end_users' => 'end_users#hide'
+
   devise_for :end_users
 
   devise_for :admins, skip: :all
@@ -28,10 +32,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :new, :create, :show]
   get '/orders/detail' => 'orders#detail'
   get '/orders/finish' => 'orders#finish'
-
-  resource :end_users, only: [:show, :edit, :update]
-  get '/end_users/confirm' => 'end_users#confirm'
-  patch '/end_users' => 'end_users#hide'
 
   resources :deliveries, except: [:new, :show]
 
