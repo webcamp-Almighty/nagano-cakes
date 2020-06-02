@@ -1,4 +1,4 @@
 class Item < ApplicationRecord
-	attachment :image
-	belongs_to :genre
+  belongs_to :genre
+  attachment :image #refile用
 end

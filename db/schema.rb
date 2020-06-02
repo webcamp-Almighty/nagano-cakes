@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_05_31_102708) do
     t.integer "price"
     t.boolean "is_soldout"
     t.string "image_id"
-    t.string "string"
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

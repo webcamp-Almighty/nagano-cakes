@@ -1,19 +1,23 @@
 class Admins::ItemsController < ApplicationController
-  def index
-    @items = Item.all
-    #ジャンル検索
-  end
-
-  def show
-    @item = Item.find(params[:id])
-  end
 
   def new
+    @item = Item.new
   end
 
-  def edit
+  def create
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to root_url
   end
 
-  def update
+  def index
+    @genres = Genre.all
   end
+
+  private
+      def item_params
+        params.require(:item).permit(:name, :price, :is_soldout,
+                                     :image, :introduction, :genre_id)
+      end
+
 end

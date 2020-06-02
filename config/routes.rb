@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
+
   resources :items, only: [:index, :show]
+
 
   resources :cart_items, only: [:create, :index, :update, :destroy]
   delete '/cart_items' => 'cart_items#empty'
