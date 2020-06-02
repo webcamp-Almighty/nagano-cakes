@@ -1,2 +1,22 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-3">
+    <h2>検索</h2>
+
+  </div>
+
+	<div class="col-xs-9">
+	<h2>ジャンル一覧</h2>
+	<%#= 後で聞く@genres.is_invalid.count%>
+    <table>
+      <tbody>
+      <% @genres.each do |genre| %>
+      	<% if genre.is_invalid == true %>
+      	<tr>
+      	  <td><%= "#{genre.name}の一覧を見る" %></td>
+      	</tr>
+      	<% end %>
+      <% end %>
+      </tbody>
+    </table>
+    </div>
+</div>

@@ -6,7 +6,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :price
       t.boolean :is_soldout
       t.string :image_id
-      t.string :string
       t.text :introduction
 
       t.timestamps
