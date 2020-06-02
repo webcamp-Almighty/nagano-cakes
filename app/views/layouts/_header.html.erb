@@ -6,7 +6,7 @@
     <ul>
       <% if end_user_signed_in? %>
       　<li><%= "ようこそ#{current_end_user.email}さん" %></li>
-        <li><%= link_to '  メンテ(たか)', genres_path, class: 'glyphicon glyphicon-log-in' %></li>
+        <li><%= link_to '  メンテ(たか)', '#', class: 'glyphicon glyphicon-log-in' %></li>
         <li><%= link_to '  マイページ', "#", method: :delete, class: 'glyphicon glyphicon-log-in' %></li>
         <li><%= link_to '  商品一覧', items_path, class: 'glyphicon glyphicon-log-in' %></li>
         <li><%= link_to '  カート', "#", class: 'glyphicon glyphicon-log-in' %></li>
