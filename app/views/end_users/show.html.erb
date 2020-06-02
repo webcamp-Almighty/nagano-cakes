@@ -2,9 +2,13 @@
 	<h2>マイページ</h2>
 </div>
 
-<h2>登録情報</h2>
-<%= link_to "編集する", edit_end_users_path, class: "btn btn-default btn-primary" %>
-<%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-default btn-primary" %>
+<table>
+	<tr>
+		<td>登録情報</td>
+		<td><%= link_to "編集する", edit_end_users_path, class: "btn btn-default btn-primary" %></td>
+	    <td><%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-default btn-primary" %></td>
+	</tr>
+</table>
 
 <table class="end_user table">
 	<tr>
@@ -33,9 +37,14 @@
 	</tr>
 </table>
 
-<h2>配送先</h2>
-<%= link_to "一覧を見る", deliveries_path, class: "btn btn-default btn-primary" %>
-
-<h2>注文履歴</h2>
-<%= link_to "一覧を見る", orders_path, class: "btn btn-default btn-primary" %>
+<table>
+	<tr>
+		<td>配送先</td>
+		<td><%= link_to "一覧を見る", deliveries_path, class: "btn btn-default btn-primary" %></td>
+	</tr>
+	<tr>
+		<td>注文履歴</td>
+		<td><%= link_to "一覧を見る", orders_path, class: "btn btn-default btn-primary" %></td>
+	</tr>
+</table>
 
