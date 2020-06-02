@@ -1,22 +1,36 @@
 <div class="row">
-  <div class="col-xs-3">
-    <h2>検索</h2>
+	<!--ジャンル検索の場合は、ジャンル一覧を表示する-->
 
-  </div>
+	<div class="col-xs-4">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">ジャンル検索</h3>
+		  </div>
+		  <div class="panel-body">
+		  	<ul>
+		  		<% @genres.each do |genre| %>
+			  		<li><%= genre.name %></li>
+		  		<% end %>
+		  	</ul>
+		  </div>
+		</div>
+	</div>
 
-	<div class="col-xs-9">
-	<h2>ジャンル一覧</h2>
-	<%#= 後で聞く@genres.is_invalid.count%>
-    <table>
-      <tbody>
-      <% @genres.each do |genre| %>
-      	<% if genre.is_invalid == true %>
-      	<tr>
-      	  <td><%= "#{genre.name}の一覧を見る" %></td>
-      	</tr>
-      	<% end %>
-      <% end %>
-      </tbody>
-    </table>
-    </div>
+	<div class="col-xs-8">
+		<h2>商品一覧<span>（全◯○件）</span></h2>
+
+
+			<% @items.each do |item| %>
+
+
+				  <%= attachment_image_tag(item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '50x50') %>
+				  <%= item.name %>
+				  <%= item.price %>
+
+			<% end %>
+	</div>
+
+	<!--ページネーション機能ついか-->
 </div>
+
+

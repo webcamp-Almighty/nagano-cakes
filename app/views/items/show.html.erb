@@ -1,2 +1,62 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="row">
+	<!--ジャンル検索の場合は、ジャンル一覧を表示する-->
+
+	<div class="col-xs-4">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">ジャンル検索</h3>
+		  </div>
+		  <div class="panel-body">
+		  	<ul>
+		  		<% @genres.each do |genre| %>
+			  		<li><%= genre.name %></li>
+		  		<% end %>
+		  	</ul>
+		  </div>
+		</div>
+	</div>
+
+	<div class="col-xs-8">
+
+		<div class=""><!--画像サイズについて確認-->
+		  <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '350x250') %>
+		</div>
+
+		<div class=""><!--文字の大きさを変更する-->
+		  <%= @item.name %>
+		</div>
+
+		<div class="">
+			<%= @item.introduction %>
+
+			ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。ここに商品説明が入ります。
+
+		</div>
+
+		<div class="">
+		  ¥<%= @item.price %>(税込)
+		</div>
+
+		<div class="dropdown">　<!--個数選択 何個まで表示すればいいのか-->
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    個数選択
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		  </ul>
+		</div>
+
+		<div class=""><!--カートに入れる-->
+			<%= link_to "カートに入れる", '#', class: "btn btn-primary" %>
+		</div>
+
+
+	</div>
+
+</div>
+

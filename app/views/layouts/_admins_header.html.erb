@@ -4,22 +4,24 @@
   </h1>
   <nav class="pc-nav">
     <ul>
-      <% if end_user_signed_in? %>
-      　<li><%= "ようこそ#{current_end_user.email}さん" %></li>
-        <li><%= link_to '  メンテ(たか)', genres_path, class: 'glyphicon glyphicon-log-in' %></li>
-        <li><%= link_to '  マイページ', "#", method: :delete, class: 'glyphicon glyphicon-log-in' %></li>
-        <li><%= link_to '  商品一覧', items_path, class: 'glyphicon glyphicon-log-in' %></li>
-        <li><%= link_to '  カート', "#", class: 'glyphicon glyphicon-log-in' %></li>
-        <li><%= link_to '  ログアウト', destroy_end_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-in' %></li>
+      <% if admin_signed_in? %>
+        <li><%= link_to '  商品一覧', admins_items_path, class: 'glyphicon glyphicon-log-in' %></li>
+        <li><%= link_to '  会員一覧', admins_end_users_path, class: 'glyphicon glyphicon-log-in' %></li>
+        <li><%= link_to '  注文履歴一覧', admins_orders_path, class: 'glyphicon glyphicon-log-in' %></li>
+        <li><%= link_to '  ジャンル一覧', admins_genres_path, class: 'glyphicon glyphicon-log-in' %></li>
+        <li><%= link_to '  ログアウト', destroy_admin_session_path, method: :delete, class: 'glyphicon glyphicon-log-in' %></li>
 
-      <!--ここの記述いらないかも
+
       <% else %>
         <li><%= link_to '  商品一覧', items_path, class: 'glyphicon glyphicon-log-in' %></li>
         <li><%= link_to '  新規登録', new_end_user_registration_path, class: 'glyphicon glyphicon-log-in' %></li>
         <li><%= link_to '  ログイン', new_end_user_session_path, class: 'glyphicon glyphicon-log-in' %></li>
 
-      -->
     　<% end %>
+
+    <!--検索機能を追加する必要あり.虫眼鏡アイコン-->
+    <input type="search" name="search" placeholder='Search' >
+
     </ul>
   </nav>
 </header>
