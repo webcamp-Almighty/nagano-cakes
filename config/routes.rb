@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/orders/finish' => 'orders#finish'
 
   resource :end_users, only: [:show, :edit, :update]
-  get '/end_users' => 'end_users#confirm'
+  get '/end_users/confirm' => 'end_users#confirm'
   patch '/end_users' => 'end_users#hide'
 
   resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
