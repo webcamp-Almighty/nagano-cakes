@@ -1,2 +1,26 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+<div class="row">
+	<div class="col-xs-4">
+
+		<div class=""><!--画像サイズについて確認-->
+
+		    <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '300x200') %>
+		</div>
+	</div>
+</div>
+
+
+	<div class="col-xs-8"><!--縦並べにしたい-->
+		商品名<%= @item.name %>
+
+		商品説明<%= @item.introduction %>
+
+		ジャンル<%= @genre.name %>
+
+		税込価格(税抜価格)<%= @item.price %> ()円
+
+		販売ステータス<%= @item.is_soldout %>
+
+
+	</div>
+
+

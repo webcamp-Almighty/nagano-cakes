@@ -3,11 +3,14 @@ class ItemsController < ApplicationController
   def index
   	@items = Item.all
   	@genres = Genre.all
-  	#binding.pry
-  	#@genre = Genre.find(1)
-  	@genre = Genre.find(2)
 
-  	#@genre = Genre.find(params[:id])
+    #条件分岐が必要
+    if params[:genre_id]
+    #if params[:id]
+    	@genre = Genre.find(params[:genre_id])
+      #@genre = Genre.find(params[:id])
+      @items = @genre.items
+    end
   end
 
   def show

@@ -12,7 +12,18 @@ class Admins::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
+    @items = Item.all
   end
+
+  def show
+    @item = Item.find(params[:id])
+    @genre = Genre.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
 
   private
       def item_params
