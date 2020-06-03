@@ -1,26 +1,52 @@
-<div class="row">
+
 	<div class="col-xs-4">
 
-		<div class=""><!--画像サイズについて確認-->
+		<!--画像サイズについて確認-->
 
-		    <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '300x200') %>
-		</div>
+		<%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '250x200') %>
 	</div>
-</div>
 
 
-	<div class="col-xs-8"><!--縦並べにしたい-->
-		商品名<%= @item.name %>
 
-		商品説明<%= @item.introduction %>
-
-		ジャンル<%= @genre.name %>
-
-		税込価格(税抜価格)<%= @item.price %> ()円
-
-		販売ステータス<%= @item.is_soldout %>
-
-
+	<div class="col-xs-8">
+		<span>商品名
+		  <h4><%= @item.name %></h4>
+		</span>
 	</div>
+
+
+
+	<div class="col-xs-8">
+		<span>商品説明
+		  <h4><%= @item.introduction %></h4>
+		</span>
+	</div>
+
+
+
+	<div class="col-xs-8">
+		<span>ジャンル
+		  <h4><%= @genre.name %></h4>
+		</span>
+	</div>
+
+	<div class="col-xs-8">
+		<span>税込価格(税抜価格)
+			<h4><%= @item.price*1.1 %>(<%= @item.price %>)円</h4>
+		</span>
+	</div>
+
+	<div class="col-xs-8">
+		<span>販売ステータス
+			<h4>
+			  	<% if @item.is_soldout == true %>
+	  				売り切れ
+	  			<% else %>
+	  				販売中
+	  			<% end %>
+	  		</h4>
+	  	</span>
+	</div>
+
 
 
