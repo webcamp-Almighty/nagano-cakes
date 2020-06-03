@@ -1,7 +1,8 @@
 <div class="row">
-  <div class="col-xs-8  col-xs-offset-2">
+  <div class="col-xs-8 col-xs-offset-2">
 
   	<h1>商品一覧</h1>
+  	<!--商品一覧の下に変な表示が出るのはなぜ-->
 
 	<table class="table table-hover table-inverse">
 	  <thead>
@@ -18,15 +19,21 @@
 	  	<% @items.each do |item| %>
 	  	  <tr>
 	  		<td><%= item.id %></td>
-	  		<td><%= item.name %></td>
+	  		<td><%= link_to item.name, item_path(item) %></td>
 	  		<td><%= item.price %></td>
 	  		<td><%= item.genre.name %></td>
-	  		<td><%= item.is_soldout %></td><!--ステータスの表示-->
+	  		<td>
+	  			<% if item.is_soldout == true %>
+	  				売り切れ
+	  			<% else %>
+	  				販売中
+	  			<% end %>
+	  		</td><
+
 	  	  </tr>
 	  	<% end %>
 
 	  </tbody>
-
 
 	</table>
   </div>
