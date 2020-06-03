@@ -12,13 +12,13 @@
       </thead>
 
       <tbody>
-      <% @users.each do |user| %>
+      <% @end_users.each do |end_user| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.last_name %><%= user.first_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.is_deleted %></td>
-          <td><%= link_to "詳細ページ", @end_user, class: "btn btn-primary" %></td>
+          <td><%= end_user.id %></td>
+          <td><%= "#{end_user.last_name}#{end_user.first_name}" %></td>
+          <td><%= end_user.email %></td>
+          <td><%= end_user.is_deleted %></td>
+          <td><%= link_to "詳細ページ", admins_end_user_path(end_user.id), class: "btn btn-primary" %></td>
         </tr>
       <% end %>
       <tbody>
