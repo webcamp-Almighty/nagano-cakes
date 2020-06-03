@@ -9,3 +9,23 @@ Admin.create!(
    email: 'admin@admin.com',
    password: 'adminadmin',
 )
+
+Genre.create!(
+	name: 'ケーキ',
+	is_invalid:1
+)
+
+Genre.create!(
+	name: 'プリン',
+	is_invalid:1
+)
+
+Genre.create!(
+	name: '焼き菓子',
+	is_invalid:1
+)
+
+Genre.create!(
+	name: 'キャンディ',
+	is_invalid:1
+)
