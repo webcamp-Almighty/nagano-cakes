@@ -1,2 +1,40 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-xs-4 ">
+  	<table class="table table-hover table-inverse">
+  	  <thead>
+  	  	<%#= form_with url: search_items_path, method: :get, local: true do |f| %>
+	      <tr>
+	        <th>ジャンル</th>
+	      </tr>
+	      <!-- <tr> -->
+	        <!-- <td><%#= f.text_field :name %> <%#= f.submit :search %></td> -->
+	      <!-- </tr> -->
+	    <%# end %>
+	  </thead>
+	  <tbody>
+        <% @genres.each do |genre| %>
+          <% if genre.is_invalid == true %>
+            <tr>
+	          <td><%= genre.name %></td>
+	        <tr>
+	      <% end %>
+	    <% end %>
+	  </tbody>
+	</table>
+  </div>
+
+  <div class="col-xs-8">
+  	ようこそ、NaganoCakeへ！</br>
+    このサイトは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります。
+  
+  <h2>オススメの商品です!!</h2>
+  <% @items.each do |item| %>
+    <%= attachment_image_tag(item, :image, :fill, 100, 50, fallback: 'no_image.jpg', size: '100x50') %>
+    商品名<%= item.name %>
+    ¥    <%= item.price %>
+         <%= item.genre.name %>
+  <% end %>
+  </div>
+</div>

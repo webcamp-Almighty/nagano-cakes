@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   root 'homes#top'
 
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+    get :search, on: :collection
+  end
 
 
   resources :cart_items, only: [:create, :index, :update, :destroy]
