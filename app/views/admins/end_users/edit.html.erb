@@ -1,2 +1,39 @@
-<h1>Admins::EndUsers#edit</h1>
-<p>Find me in app/views/admins/end_users/edit.html.erb</p>
+<h1>会員編集</h1>
+
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+   <%= form_with(model: @end_user, url: admins_end_user_path) do |f| %>
+      <%#= render 'shared/error_messages' %>
+
+      <%= f.label :"氏名(姓)" %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+
+      <%= f.label :"氏名(名)" %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+
+      <%= f.label :"フリガナ(セイ)" %>
+      <%= f.text_field :last_name_kana, class: 'form-control' %>
+
+      <%= f.label :"フリガナ(メイ)" %>
+      <%= f.text_field :first_name_kana, class: 'form-control' %>
+
+	  <%= f.label :email %>
+	  <%= f.email_field :email, class: 'form-control'  %>
+
+      <%= f.label :電話番号 %>
+	  <%= f.text_field :telephone_number, class: 'form-control' %>
+
+	  <%= f.label :郵便番号 %>
+	  <%= f.text_field :postal_code, class: 'form-control' %>
+
+	  <%= f.label :住所 %>
+	  <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :会員ステータス %>
+      <%= f.radio_button :is_deleted, :"1" %>有効
+      <%= f.radio_button :is_deleted, :"0" %>退会済み
+
+      <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+    <% end %>
+  </div>

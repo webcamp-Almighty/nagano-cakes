@@ -7,8 +7,11 @@ class Admins::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to root_url
+      if @item.save
+        redirect_to root_url
+      else
+        render new
+      end
   end
 
   def index
@@ -23,6 +26,16 @@ class Admins::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = 'successful!!'
+      redirect_to item_path(@item)
+    else
+      render 'edit'
+    end
   end
 
 
