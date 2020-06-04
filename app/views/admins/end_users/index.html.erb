@@ -17,7 +17,12 @@
           <td><%= end_user.id %></td>
           <td><%= "#{end_user.last_name}#{end_user.first_name}" %></td>
           <td><%= end_user.email %></td>
-          <td><%= end_user.is_deleted %></td>
+          <td><%if end_user.is_deleted == true %>
+                  有効
+              <% else %>
+                  退会
+              <% end %>
+          </td>
           <td><%= link_to "詳細ページ", admins_end_user_path(end_user.id), class: "btn btn-primary" %></td>
         </tr>
       <% end %>
