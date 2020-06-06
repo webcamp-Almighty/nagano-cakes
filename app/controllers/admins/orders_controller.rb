@@ -1,13 +1,9 @@
 class Admins::OrdersController < ApplicationController
   def index
+  	@orders = Order.all
   end
 
   def show
   end
 
-  def detail
-  end
-
-  def finish
-  end
 end
