@@ -73,6 +73,6 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 
 gem 'pry-byebug'
-
+#日本語化対応
 gem 'enum_help'
 gem 'rails-i18n'

@@ -1,2 +1,33 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<h2>注文ステータスの変更</h2>
+<table class="table table-bordered">
+    <thead>
+    	<tr>
+    		<th>購入者</th>
+    		<th>配送先</th>
+    		<th>支払い方法</th>
+    		<th>注文ステータス</th>
+    	</tr>
+    </thead>
+    <tbody>
+    	<tr>
+            <!--購入者-->
+    		<td><%= @order.name %></td>
+
+    		<!-- 配送先 -->
+    		<td><%= @order.address %></td>
+
+    		<!--支払い方法-->
+    		<td>未実装<%#= @order.peyment_method %></td>
+
+　　　　　　　<!--注文ステータス-->
+            <td><%= form_with(model: @order, url:'/admins/order/id') do |f| %>
+            <%= f.collection_select :order_status, Order.all, :id, :order_status %>
+            <%= f.submit "未実装", class: "btn btn-primary" %>
+            <% end %>
+            </td>
+
+    	</tr>
+
+    </tbody>
+
+</table>

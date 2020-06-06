@@ -1,7 +1,7 @@
 ja:
   enums:
-    order:
-      order_status:
+    order: #model名
+      order_status: #カラム名
         waiting     : "入金待ち"
         confirmation: "入金確認"
         progress    : "製作中"
