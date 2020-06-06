@@ -1,2 +1,54 @@
-<h1>Orders#detail</h1>
-<p>Find me in app/views/orders/detail.html.erb</p>
+<h2>注文情報確認</h2>
+
+	<table class="table table-bordered">
+	    <tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+	    </tr>
+	    <%# @order_items.each do |order_item| %>
+	    <tr>
+			<td><%#= order.name %></td>
+			<td><%#= order_item.tax_item_price %></td>
+			<td><%#= order_item.number %></td>
+			<td><%#= order.total_price %></td>
+	    </tr>
+	    <%# end %>
+	</table>
+
+	<table class="table table-bordered">
+	    <tr>
+			<th>送料</th>
+			<th>商品合計</th>
+			<th>請求金額</th>
+	    </tr>
+	    <tr>
+		<!--each文で回して、データ取ってくる、関連付け必要-->
+		<% @orders.each do |order| %>
+			<td><%= order.shipping_fees %></td>
+			<td><%= order.total_price %></td>
+			<!--請求金額=送料+合計金額-->
+			<td><%= order.shipping_fees + order.total_price %></td>
+
+	    </tr>
+	    <% end %>
+	</table>
+
+
+	<table class="table table-borderless">
+	    <tr>
+			<th>支払い方法</th>
+			<td></td>
+	    </tr>
+	    <tr>
+			<th>お届け先</th>
+			<td></td>
+	    </tr>
+	</table>
+
+	<!--formでかける-->
+
+	<div class="row">
+		<%= link_to '購入を確定する', orders_path, class: 'btn btn-default btn-success' %>
+	</div>
