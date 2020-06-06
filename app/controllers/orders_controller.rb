@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order_end_user_id = current_end_user.id
+    @order.end_user_id = current_end_user.id
     if @order.save
       redirect_to orders_finish_path
     else
@@ -28,16 +28,7 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:order_id])
       @order_items = @order.order_items
    end
-    # @order_item = OrderItem
 
-
-    #     #条件分岐が必要
-    # if params[:genre_id]
-    # #if params[:id]
-    #   @genre = Genre.find(params[:genre_id])#ここのコードの意味
-    #   #@genre = Genre.find(params[:id])
-    #   @items = @genre.items
-    # end
   end
 
   def finish

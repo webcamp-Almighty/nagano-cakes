@@ -1,6 +1,15 @@
 class Order < ApplicationRecord
+	belongs_to :user #追記
 	has_many :order_items
+
 	enum order_status:{ waiting: 0, confirmation: 1, progress: 2, preparing: 3, shipped: 4 }
+
+	enum payment_method: {
+		credit_card: 0,
+		bank_transfer: 1
+
+	}
+
 end
 
 
