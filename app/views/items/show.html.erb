@@ -30,14 +30,14 @@
 
 		<div class=""><!--画像サイズについて確認-->
 
-		    <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '300x200') %>
+		    <%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '300x200') %>
 		</div>
 	</div>
 
 	<div class="col-xs-4"><!--文字の大きさを変更する-->
 		<h3><%= @item.name %></h3>
 
-		<%= @item.introduction %>
+		<%= @item.introduction %><br>
 
 		¥<%= @item.price %>(税込)
 

@@ -9,6 +9,10 @@ Admin.create!(
    email: 'admin@admin.com',
    password: 'adminadmin',
 )
+EndUser.create!(
+   email: 'user@admin.com',
+   password: 'adminadmin'
+)
 
 Genre.create!(
 	name: 'ケーキ',
@@ -29,4 +33,3 @@ Genre.create!(
 	name: 'キャンディ',
 	is_invalid:1
 )
-
