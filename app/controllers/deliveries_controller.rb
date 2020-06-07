@@ -29,7 +29,7 @@ class DeliveriesController < ApplicationController
 
   private
   def delivery_params
-  	#params.require(:delivery).permit(:end_user_id, :name, :postal_code, :address)
+  	# params.require(:delivery).permit(:end_user_id, :name, :postal_code, :address)
     params.require(:delivery).permit(:name, :postal_code, :address)
   end
 end
