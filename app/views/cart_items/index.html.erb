@@ -23,14 +23,16 @@
 			<%= attachment_image_tag cart_item.item, :image, size: "50x40", class: "img-rounded pull-left", fallback: "no_image.jpg" %>
 			<%= cart_item.item.name %>
 		</td>
-		<td><%= cart_item.item.price %></td><!-- ここは税込価格で表示されるよう計算式?を記入してください -->
+		<td><%= cart_item.item.price %></td>
 		<td>
-			<%= cart_item.number %>
-			<%= link_to "変更", items_path, class: "btn btn-default btn-primary" %>
+			<%= form_for(cart_item) do |f| %>
+				<%= f.select :number, (1..5).to_a %><!-- 個数制限は妥当でしょうか -->
+				<%= f.submit "変更", class: "btn btn-default btn-primary" %>
+			<% end %>
 		</td>
-		<td>ここにカートに入れた小計が入ります</td><!-- ここは税込価格と数量の積 -->
+		<td><%= cart_item.item.price * cart_item.number %></td>
 		<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-default btn-danger" %>
-</td>
+		</td>
 	</tr>
 	<% end %>
 	</tbody>
@@ -38,12 +40,14 @@
 </div>
 
 <div class="row">
-	<%= link_to "買い物を続ける", items_path, class: "btn btn-default btn-primary" %>
+	<div class="col-md-1">
+		<%= link_to "買い物を続ける", items_path, class: "btn btn-default btn-primary" %>
+	</div>
 
 	<table class="col-md-2 col-md-offset-10">
 		<tr>
 			<td>合計金額</td>
-			<td>ここに合計金額です</td>
+			<td><td>
 		</tr>
 	</table>
 </div>
