@@ -1,20 +1,29 @@
 <h2>注文情報確認</h2>
 
-	<table class="table table-bordered">
+	<table class="table table-hover table-bordered">
+	  <thead>
 	    <tr>
 			<th>商品名</th>
 			<th>単価(税込)</th>
 			<th>数量</th>
 			<th>小計</th>
 	    </tr>
-	    <%# @order_items.each do |order_item| %>
+	  </thead>
+	  <tbody>
+	  	<!--カートで一時保存したデータを呼び出す-->
+	    <% @cart_items.each do |cart_item| %>
 	    <tr>
-			<td><%#= order.name %></td>
-			<td><%#= order_item.tax_item_price %></td>
-			<td><%#= order_item.number %></td>
-			<td><%#= order.total_price %></td>
+	    	<td>
+	    		<%= attachment_image_tag(cart_item.item, :image, :fill, 60, 60, fallback: 'no_image.jpg', size: '65x65') %>
+	    		<%= cart_item.item.name %>
+	    	</td>
+
+			<td><%= cart_item.item.price %></td>
+			<td><%= cart_item.number %></td>
+			<td><%= cart_item.item.price * cart_item.number %></td>
 	    </tr>
-	    <%# end %>
+	    <% end %>
+	  </tbody>
 	</table>
 
 	<table class="table table-bordered">
@@ -23,32 +32,44 @@
 			<th>商品合計</th>
 			<th>請求金額</th>
 	    </tr>
-	    <tr>
-		<!--each文で回して、データ取ってくる、関連付け必要-->
-		<% @orders.each do |order| %>
-			<td><%= order.shipping_fees %></td>
-			<td><%= order.total_price %></td>
+	    <tr><!--変数として定義したい-->
+			<td>800</td>
+			<!--total_priceの定義はどこですればいいのか、コントローラでok-->
+			<td><%#= @order.total_price %></td>
 			<!--請求金額=送料+合計金額-->
-			<td><%= order.shipping_fees + order.total_price %></td>
+			<td><%#= #{@order.shipping_fees} + #{@order.total_price} %></td>
 
 	    </tr>
-	    <% end %>
 	</table>
 
 
 	<table class="table table-borderless">
 	    <tr>
 			<th>支払い方法</th>
-			<td></td>
+			<td>
+				<!--rails sessionについて調べる-->
+				<!--sessionの情報はコントローラに定義-->
+				     <% if @order.payment_method == 0 %>
+                         クレジットカード
+                    <% else %>
+                        銀行振込
+                    <% end %>
+
+
+				<%= @order.payment_method %></td>
 	    </tr>
 	    <tr>
 			<th>お届け先</th>
-			<td></td>
+			<td>
+				<%=  @order.postal_code %>
+				<%= @order.address %>
+
+			</td>
 	    </tr>
+
 	</table>
 
-	<!--formでかける-->
-
+	<!--formでかける、hidden_field使える？？？-->
 	<div class="row">
 		<%= link_to '購入を確定する', orders_path, class: 'btn btn-default btn-success' %>
 	</div>

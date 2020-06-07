@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-
   end
 
   def create
@@ -23,12 +22,8 @@ class OrdersController < ApplicationController
   end
 
   def detail
-    @orders = Order.all
-   if params[:order_id]
-      @order = Order.find(params[:order_id])
-      @order_items = @order.order_items
-   end
-
+    @cart_items = CartItem.where(end_user_id: current_end_user.id)
+    @order = Order.new(order_params)
   end
 
   def finish
