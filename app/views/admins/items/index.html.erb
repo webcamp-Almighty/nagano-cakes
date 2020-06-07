@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
+  	  <h1>商品一覧</h1>
+  	<div class="text-right">
+		<%= link_to "+", new_admins_item_path, class: " btn btn-default", style: "border-radius: 50%" %>
+	</div>
 
-  	<h1>商品一覧</h1>
-  	<!--商品一覧の下に変な表示が出るのはなぜ-->
 
 	<table class="table table-hover table-inverse">
 	  <thead>
@@ -28,7 +30,7 @@
 	  			<% else %>
 	  				販売中
 	  			<% end %>
-	  		</td><
+	  		</td>
 
 	  	  </tr>
 	  	<% end %>
