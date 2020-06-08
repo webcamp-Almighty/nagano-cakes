@@ -24,7 +24,7 @@
 			<%= cart_item.item.name %>
 		</td>
 		<td><%= converting_to_jpy(cart_item.item.price) %>
-			<!-- cart_items_helper.rb参照 -->
+			<!-- 3桁区切りで表示されるようcart_items_helper.rbに定義 -->
 		</td>
 		<td>
 			<%= form_for(cart_item) do |f| %>
@@ -54,7 +54,7 @@
 			<td>合計金額</td>
 			<td>
 				<%= converting_to_jpy(current_end_user.cart_item_sum) %>
-				<!-- cart_items_helper.rb参照 -->
+				<!-- cart_item_sumはend_user.rbに定義 -->
 			<td>
 		</tr>
 	</table>
