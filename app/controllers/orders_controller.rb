@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
   end
 
   def detail
-    #@total_price = @order.shipping_fees + current_end_user.cart_item_sum
     @cart_items = CartItem.where(end_user_id: current_end_user.id)
     @order = Order.new(order_params)
     if params[:radio_button] == "1"
@@ -60,6 +59,8 @@ class OrdersController < ApplicationController
       @order.address = params[:order][:name]
       @order.name = params[:order][:address]
     end
+    #wakarinikui
+    #@total_price = converting_to_jpy(current_end_user.cart_item_sum) + @order.shipping_fees
   end
 
   def finish
