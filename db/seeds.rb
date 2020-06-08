@@ -33,3 +33,4 @@ Genre.create!(
 	name: 'キャンディ',
 	is_invalid:1
 )
+

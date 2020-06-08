@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_end_user!
+
   def index
-    @orders = Order.all
+    #@orders = Order.all
+    #@total_price = @shipping_fees + current_end_user.cart_item_sum
+    @order_items = OrderItem.all
   end
 
   def new
@@ -21,8 +24,7 @@ class OrdersController < ApplicationController
         @order_item.order_id = @order.id
         @order_item.number = cart_item.number
         @order_item.tax_item_price = cart_item.item.price
-        @order_item.item_status = 0 #デフォルト値設定したら、この記述いらない
-
+        #@order_item.order_status = 0 #デフォルト値設定したら、この記述いらない
         @order_item.save
       end
         redirect_to finish_orders_path
@@ -36,6 +38,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def detail
@@ -48,7 +51,7 @@ class OrdersController < ApplicationController
       @order.name = current_end_user.last_name
       #@order.first_name = current_end_user.first_name
     elsif params[:radio_button] == "2"
-      @delivery = Delivery.find(params[:order][:delivery_id])
+      @delivery = Delivery.find(params[:order][:delivery_id]) #記述
       @order.postal_code = @delivery.postal_code
       @order.address = @delivery.address
       @order.name = @delivery.name
