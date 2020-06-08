@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resource :end_users, only: [:show, :edit, :update]
-  get '/end_users/confirm' => 'end_users#confirm'
-  patch '/end_users' => 'end_users#hide'
+  get '/end_users/confirm'
+  put '/end_users/:id/hide' => 'end_users#hide', as: 'end_users_hide'
 
   devise_for :end_users
 
