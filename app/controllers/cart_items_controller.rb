@@ -5,13 +5,44 @@ class CartItemsController < ApplicationController
   end
 
   def create
-  	@cart_item = CartItem.new(cart_item_params)
-  	@cart_item.end_user_id = current_end_user.id
-   	if @cart_item.save
-      redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.end_user_id = current_end_user.id
+    if current_end_user.cart_items.exists?(item_id: @cart_item.item_id)
+      @cart_item = current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      # @cart_item.number += params[:number].to_i
+      num = @cart_item.number + params[:cart_item][:number].to_i
+      @cart_item.update(number: num)
+      # @cart_item.update(number: @cart_item.number + params[:cart_item][:number].to_i)
+      # numberカラムにnumを入れる。15行目の記述は13~14行目を一行で表した記述
+      redirect_to cart_items_path
     else
-      redirect_back(fallback_location: root_path)
+      @cart_item.save
+      redirect_to cart_items_path
     end
+
+#     CartItem.find_by(item_id: @cart.item_id)
+#     exist?エラー文のやつ存在してたら加算if文
+#     if exist
+#       cart_item = CartItem.find(id)
+
+
+
+# # 商品idとカート内の商品idを比べる
+#     if params[:item_id] == cart_item.item.id
+#       cart_item.update
+#       redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+#     else
+#       cart_item.save
+#       redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+#     end
+
+  	# @cart_item = CartItem.new(cart_item_params)
+  	# @cart_item.end_user_id = current_end_user.id
+   # 	if @cart_item.save
+   #    redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+   #  else
+   #    redirect_back(fallback_location: root_path)
+   #  end
   end
 
   def update
