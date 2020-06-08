@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :genre_id
       t.string :name
       t.integer :price
-      t.boolean :is_soldout
+      t.boolean :is_soldout, default:false
       t.string :image_id
       t.text :introduction
 
