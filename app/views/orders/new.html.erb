@@ -30,11 +30,13 @@
 	  	<div class="col-xs-6 col-xs-offset-2">
 	  	  <label class="control-label">お届け先</label>
 	  	</div>
-	  </div><!--プロパティ名と値をセットで指定する必要がある--><!--valueも書いたけど、なくてもいけるみたいでよくわからない-->
-
+	  </div>
 	  <!--自分の住所-->
 	  <div class="form-group">
 	    <div class="col-xs-6 col-xs-offset-2">
+	    	<!--ラジオボタン1の情報を送信するだけ-->
+	    	<!--住所データはend_userモデルから取ってこれる-->
+	    	<!-- f.という記述でないことに注意-->
 	    	<%= radio_button_tag :radio_button, 1 %>
 	    	<%= f.label :address, 'ご自身の住所', style:"display: inline-block;" %><br />
             <%= "〒#{current_end_user.postal_code}  #{current_end_user.address}  #{current_end_user.last_name} #{current_end_user.first_name}" %>
@@ -43,6 +45,8 @@
 	  <!--登録先住所-->
 	  <div class="form-group">
 	  	<div class="col-xs-6 col-xs-offset-2">
+	  		<!--ラジオボタン2の情報を送信するだけ-->
+	  		<!--住所データはeDeliveryモデルから取ってこれる-->
 	    	<%= radio_button_tag :radio_button, 2 %>
 	    	<%= f.label :address, '登録先住所から選択',style:'display: inline-block;' %><br />
 	    	<!--セレクトボタン-->
@@ -53,7 +57,7 @@
 	  <div class="form-group">
 	  	<div class="col-xs-6 col-xs-offset-2">
 
-	  		<!--ラジオボタンの書き方-->
+	  		<!--ラジオボタン3の情報を送信する-->
 	  		<%= radio_button_tag :radio_button, 3 %>
 	  		<%= f.label :address, '新しいお届け先', value: 3, style: 'display: inline-block;' %><br />
 

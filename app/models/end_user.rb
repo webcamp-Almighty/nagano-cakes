@@ -15,4 +15,5 @@ class EndUser < ApplicationRecord
   	end
   	total
   end
+
 end
