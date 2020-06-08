@@ -12,23 +12,34 @@
     </thead>
     <tbody>
 
-    	<% @orders.each do |order| %>
-    	<tr>
-    		<td><%= order.created_at %></td>
+        <% @order_items.each do |order_item| %>
+        <tr>
+            <td><!--注文日-->
+                <%= order_item.created_at %>
+            </td>
 
-    		<!--ユーザーに紐づく配送先を表示する必要あり,修正必要-->
-    		<td><%= order.address %></td>
+            <!--他に良い書き方があるのでは-->
+            <td><!--配送先-->
+                <%= order_item.order.address %>
+            </td>
 
-    		<!--orderitemsの情報が欲しい-->
-    		<td><%= order.name %></td>
+            <td><!--注文商品名-->
+                <%= order_item.item.name %>
+            </td>
+            <!--total_priceを使う, showでも使えるように-->
+            <!--もっといい書き方ありそう、変数でまとめたい-->
+            <td><!--支払い金額 = 単価*小計 + 800 -->
+                <%= order_item.tax_item_price * order_item.number + 800 %>
+            </td>
 
-    		<td><%= order.total_price %></td>
+            <td><!--注文ステータス、入金情報-->
+                <%= order_item.order.order_status_i18n %>
+            </td>
 
-    		<td><%= order.order_status %></td>
-
-    		<td><%= link_to '表示する', order_path(order), class: 'btn btn-default btn-primary' %></td>
-    	</tr>
-    	<% end %>
+            <td><%= link_to '表示する', order_path(order_item), class: 'btn btn-default btn-primary' %>
+            </td>
+        </tr>
+        <% end %>
 
     </tbody>
 

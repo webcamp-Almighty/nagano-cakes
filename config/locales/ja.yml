@@ -8,9 +8,6 @@ ja:
         preparing   : "発送準備中"
         shipped     : "発送済み"
 
-ja:
-  enums:
-    order: #model名
       payment_method: #カラム名
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
