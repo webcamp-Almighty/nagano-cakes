@@ -29,7 +29,7 @@
 		</td>
 		<td>
 			<%= form_for(cart_item) do |f| %>
-				<%= f.select :number, (1..5).to_a %><!-- 個数制限は妥当でしょうか -->
+				<%= f.select :number, (1..20).to_a %><!-- 個数制限は妥当でしょうか -->
 				<%= f.submit "変更", class: "btn btn-default btn-primary" %>
 			<% end %>
 		</td>
