@@ -39,7 +39,7 @@
 
 		<%= @item.introduction %><br>
 
-		¥<%= @item.price %>(税込)
+		¥<%= converting_to_jpy(@item.price) %>(税込)
 
 		<!--カートに入れる.ボタンの位置を調整する必要あり-->
 		<%= form_for(@cart_item, url: '/cart_items') do |f| %>

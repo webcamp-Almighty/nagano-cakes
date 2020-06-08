@@ -2,9 +2,10 @@
 	<div class="row">
 		<h3>ショッピングカート</h3>
 		<div class="col-md-2 col-md-offset-10">
-			<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, class: "btn btn-default btn-danger" %>
+			<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-default btn-danger" %>
 		</div>
 	</div>
+
 	<div class="row">
 <table class="col-md-12">
 	<thead>
@@ -36,7 +37,7 @@
 			<%= converting_to_jpy(cart_item.item.price * cart_item.number) %>
 			<!-- cart_items_helper.rb参照 -->
 		</td>
-		<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-default btn-danger" %>
+		<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: "この商品を削除してもよろしいですか？"}, class: "btn btn-default btn-danger" %>
 		</td>
 	</tr>
 	<% end %>
@@ -59,10 +60,12 @@
 		</tr>
 	</table>
 </div>
-
+<!-- カートが空の場合、情報入力に進めない -->
+<% if current_end_user.cart_items.present? %>
 	<div class="row">
 		<div class="col-md-2 col-md-offset-5">
 			<%= link_to "情報入力に進む", new_order_path, class: "btn btn-lg btn-success" %>
 		</div>
 	</div>
+<% end %>
 </div>
