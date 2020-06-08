@@ -1,4 +1,5 @@
 class DeliveriesController < ApplicationController
+  before_action :authenticate_end_user!
   def index
   	@delivery = Delivery.new
   	@deliveries = current_end_user.deliveries
