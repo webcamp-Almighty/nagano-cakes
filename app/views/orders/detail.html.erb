@@ -1,20 +1,29 @@
 <h2>注文情報確認</h2>
 
-	<table class="table table-bordered">
+	<table class="table table-hover table-bordered">
+	  <thead>
 	    <tr>
 			<th>商品名</th>
 			<th>単価(税込)</th>
 			<th>数量</th>
 			<th>小計</th>
 	    </tr>
-	    <%# @order_items.each do |order_item| %>
+	  </thead>
+	  <tbody>
+	  	<!--カートで一時保存したデータを呼び出す-->
+	    <% @cart_items.each do |cart_item| %>
 	    <tr>
-			<td><%#= order.name %></td>
-			<td><%#= order_item.tax_item_price %></td>
-			<td><%#= order_item.number %></td>
-			<td><%#= order.total_price %></td>
+	    	<td>
+	    		<%= attachment_image_tag(cart_item.item, :image, :fill, 60, 60, fallback: 'no_image.jpg', size: '65x65') %>
+	    		<%= cart_item.item.name %>
+	    	</td>
+
+			<td><%= cart_item.item.price %></td>
+			<td><%= cart_item.number %></td>
+			<td><%= cart_item.item.price * cart_item.number %></td>
 	    </tr>
-	    <%# end %>
+	    <% end %>
+	  </tbody>
 	</table>
 
 	<table class="table table-bordered">
@@ -24,31 +33,79 @@
 			<th>請求金額</th>
 	    </tr>
 	    <tr>
-		<!--each文で回して、データ取ってくる、関連付け必要-->
-		<% @orders.each do |order| %>
-			<td><%= order.shipping_fees %></td>
-			<td><%= order.total_price %></td>
-			<!--請求金額=送料+合計金額-->
-			<td><%= order.shipping_fees + order.total_price %></td>
-
+	    	<td>><!--変数として定義,モデルでdefaultで-->
+			  <%= @shipping_fees %>
+			</td>
+			<td><!--商品合計-->
+			  <%= converting_to_jpy(current_end_user.cart_item_sum) %>
+			</td>
+			<td><!--請求金額=送料+合計金額-->
+			  <%= @total_price %>
+			</td>
 	    </tr>
-	    <% end %>
 	</table>
 
 
 	<table class="table table-borderless">
 	    <tr>
 			<th>支払い方法</th>
-			<td></td>
+			<td>
+			<!--form_forで書いてるから,条件分岐いらないってこと?-->
+			<!--条件分岐なしでも結果が変わらない-->
+		      <% if @order.payment_method == 0 %>
+                 <%= @order.payment_method_i18n %>
+              <% else %>
+                <%= @order.payment_method_i18n %>
+              <% end %>
+			</td>
 	    </tr>
 	    <tr>
 			<th>お届け先</th>
-			<td></td>
+			<td><!--コントローらで記述する方法は？-->
+
+				<% if params[:radio_button] == "1" %>
+				<%= current_end_user.postal_code %>
+				<%= current_end_user.address %><br>
+				<%= current_end_user.last_name %>
+				<%= current_end_user.first_name %>
+
+				<% elsif params[:radio_button] == "2" %>
+				<% delivery = Delivery.find(params[:order][:delivery_id]) %>
+				<%= delivery.postal_code %>
+				<%= delivery.address %>
+				<%= delivery.name %>
+
+				<% else %>
+				<%= params[:order][:postal_code] %>
+				<%= params[:order][:name] %>
+				<%= params[:order][:address] %>
+
+				<% end %>
+				<%= @order.postal_code %>
+				<%= @order.address %>
+
+			</td>
 	    </tr>
+
 	</table>
 
-	<!--formでかける-->
-
+	<!--hidden_field、最終的にユーザーの注文情報として保存する必要があるのはどの情報か-->
+	<!--注文情報確定ボタン-->
 	<div class="row">
-		<%= link_to '購入を確定する', orders_path, class: 'btn btn-default btn-success' %>
+		<%= form_with(model: @order,url: orders_path,local:true) do |f| %>
+			<%= f.hidden_field :end_user_id, :value => current_end_user.id %>
+
+			<!--支払い方法-->
+			<%= f.hidden_field :payment_method_i18n, :value => @order.payment_method_i18n %>
+			<!--お届け先-->
+			<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+			<%= f.hidden_field :address, :value => @order.address %>
+			<!--送料は送る必要ある？？？-->
+			<%#= f.hidden_field :shipping_fees, value => @shipping_fees %>
+			<!--請求金額-->
+			<%#= f.hidden_field :total_price, value => @order.total_price %>
+			<%#= f.hidden_field :radio_number, value => @order. %>
+
+		<%= f.submit '購入を確定する', class: 'btn btn-default btn-success' %>
+		<% end %>
 	</div>

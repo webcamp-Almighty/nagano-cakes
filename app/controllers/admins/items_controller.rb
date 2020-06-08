@@ -8,7 +8,7 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
       if @item.save
-        redirect_to root_url
+        redirect_to items_path
       else
         render new
       end

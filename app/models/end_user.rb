@@ -8,7 +8,17 @@ class EndUser < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+
+  def cart_item_sum
+  	total = 0
+  	cart_items.each do |cart_item|
+  		total += cart_item.item.price * cart_item.number
+  	end
+  	total
+  end
+
 end
