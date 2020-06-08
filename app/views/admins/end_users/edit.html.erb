@@ -31,8 +31,8 @@
 	  <%= f.text_field :address, class: 'form-control' %>
 
       <%= f.label :会員ステータス %>
-      <%= f.radio_button :is_deleted, :"1" %>有効
-      <%= f.radio_button :is_deleted, :"0" %>退会済み
+      <%= f.radio_button :is_deleted, :"0" %>有効
+      <%= f.radio_button :is_deleted, :"1" %>退会済み
 
       <%= f.submit "変更を保存する", class: "btn btn-primary" %>
     <% end %>

@@ -26,4 +26,16 @@ class ApplicationController < ActionController::Base
 		 :first_name, :last_name_kana, :first_name_kana,
 		 :telephone_number, :postal_code, :address, :is_deleted])
 	end
+
+    def reject_user
+    @end_user = User.find_by(email: params[:user][:email].downcase)
+    if @end_user
+      if (@end_user.valid_password?(params[:user][:password]) && (@end_user.active_for_authentication? == false))
+        redirect_to new_user_session_path
+      end
+    else
+      flash[:error] = "必須項目を入力してください。"
+    end
+  end
+
 end
