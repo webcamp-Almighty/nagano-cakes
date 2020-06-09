@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
         #@order_item.order_status = 0 #デフォルト値設定したら、この記述いらない
         @order_item.save
       end
+      # 購入確定後カートを空にする
       current_end_user.cart_items.destroy_all
       redirect_to finish_orders_path
     else
