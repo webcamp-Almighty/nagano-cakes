@@ -9,26 +9,17 @@
     	</tr>
     </thead>
     <tbody>
-    	<!--each文で回して、データ取ってくる、関連付け必要-->
-    	<% @orders.each do |order| %>
-    	<tr>
-            <!-- 購入日時 -->
-    		<td><%= order.created_at %></td>
-
-            <!-- 購入者 -->
-    		<td><%= order.name %></td>
-
-    		<td><%= "未実装" %></td>
-
-　　　　　　　<!--ステ-タス-->
-    		<td><%= order.order_status_i18n %></td>
-
-    		<td><%= link_to '詳細画面', admins_order_path(order), class: 'btn btn-default btn-primary' %></td>
-
-
-    	</tr>
-    	<% end %>
-
+        <% @order_items.each do |order_item| %>
+        <!-- 購入日時 -->
+        <td><%= order_item.order.created_at %></td>
+        <!-- 購入者 -->
+        <td><%= order_item.order.end_user.last_name %></td>
+        <!-- 購入個数 -->
+        <td><%= order_item.number %></td>
+        <!-- 製作ステータス -->
+        <td><%= order_item.item_status %></td>
+        <td><%= link_to '詳細画面', admins_order_path(order_item.order.id), class: 'btn btn-default btn-primary' %></td>
+        </tr>
+        <% end %>
     </tbody>
-
 </table>
