@@ -14,8 +14,8 @@
 
         <% @order_items.each do |order_item| %>
         <tr>
-            <td><!--注文日-->
-                <%= order_item.created_at %>
+            <td><!--日本時間で表示する-->
+                <%= order_item.created_at.to_s(:datetime_jp) %>
             </td>
 
             <!--他に良い書き方があるのでは-->

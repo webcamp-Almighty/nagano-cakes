@@ -40,7 +40,8 @@
 			  <%= converting_to_jpy(current_end_user.cart_item_sum) %>
 			</td>
 			<td><!--請求金額=送料+合計金額-->
-				<!-- @total_priceとして表示するにはどうすレバ-->
+				<!--total_priceカラムの意義とは-->
+				<%#= @total_price %>
 			  <%= @order.shipping_fees + current_end_user.cart_item_sum %>
 			</td>
 	    </tr>
