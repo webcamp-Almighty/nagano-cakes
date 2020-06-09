@@ -1,25 +1,30 @@
 <h2>注文履歴一覧</h2>
+
 <table class="table table-bordered">
     <thead>
-    	<tr>
+        <tr>
             <th>購入日時</th>
-    		<th>購入者</th>
-    		<th>注文個数</th>
-    		<th>ステータス</th>
-    	</tr>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>ステータス</th>
+        </tr>
     </thead>
+
     <tbody>
-        <% @order_items.each do |order_item| %>
+        <% @orders.each do |order| %>
         <!-- 購入日時 -->
-        <td><%= order_item.order.created_at %></td>
+        <td><%= order.created_at %></td>
         <!-- 購入者 -->
-        <td><%= order_item.order.end_user.last_name %></td>
+        <td><%= order.end_user.last_name %></td>
         <!-- 購入個数 -->
-        <td><%= order_item.number %></td>
+        <td><%= order.order_items.pluck(:number).sum %></td>
         <!-- 製作ステータス -->
-        <td><%= order_item.item_status %></td>
-        <td><%= link_to '詳細画面', admins_order_path(order_item.order.id), class: 'btn btn-default btn-primary' %></td>
+        <td><%= order.order_status_i18n %></td>
+        <td><%= link_to '詳細画面', admins_order_path(order.id), class: 'btn btn-default btn-primary' %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+
+
+
