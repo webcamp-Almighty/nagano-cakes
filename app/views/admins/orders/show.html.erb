@@ -63,12 +63,12 @@
             <!--現在の製作ステータス-->
             <td><%= order_item.item_status_i18n %></td>
 
-         <% end %>
-            <td><%= form_with(model: @order_item, url:admins_order_item_path(@order),method: :patch) do |f| %>
+            <td><%= form_with(model: @order_item, url:"/admins/order_items/#{order_item.id}",method: :patch) do |f| %>
                   <%= f.select :item_status, OrderItem.item_statuses_i18n.invert %>
                   <%= f.submit "更新する", class: "btn btn-primary" %>
-                <% end %>
             </td>
+                <% end %>
+        <% end %>
         </tr>
     </tbody>
 </table>
