@@ -22,4 +22,5 @@ class EndUser < ApplicationRecord
   end
 
 
+
 end

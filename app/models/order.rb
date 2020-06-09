@@ -9,6 +9,17 @@ class Order < ApplicationRecord
 		bank_transfer: 1
 	}
 
+
+
+  def total_price
+    total = 0
+    order_items.each do |order_item|
+      total += order_item.tax_item_price * order_item.number
+    end
+    total
+  end
+
+
 end
 
 
