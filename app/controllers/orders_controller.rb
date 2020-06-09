@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
       @order.name = params[:order][:address]
     end
     #wakarinikui
-    #@total_price = converting_to_jpy(current_end_user.cart_item_sum) + @order.shipping_fees
+    #@total_price = converting_to_jpy(current_end_user.cart_item_sum)
   end
 
   def finish

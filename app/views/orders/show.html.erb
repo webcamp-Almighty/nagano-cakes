@@ -30,12 +30,13 @@
 			<th>配送料</th>
 			<th>ご請求額</th>
 	    </tr>
-	    <tr><!--修正が必要!!!!!!!!!!!!--><!--現状、カートアイテムの商品合計が表示される-->
-			<td><%= converting_to_jpy(current_end_user.cart_item_sum) %></td>
+	    <tr><!--total_priceについて、orderモデルで記述-->
+			<td><%= converting_to_jpy(@order.total_price) %></td>
 
 			<td><%= @order.shipping_fees %></td>
 
-			<td><%= converting_to_jpy(current_end_user.cart_item_sum + @order.shipping_fees) %></td>
+			<!--コントローラで記述したい-->
+			<td><%= converting_to_jpy(@order.total_price + @order.shipping_fees) %></td>
 	    </tr>
 	</table>
   </div>
@@ -56,13 +57,14 @@
 	    </tr>
 	  </thead>
 	  <tbody>
+	    <% @order_items.each do |order_item| %>
 	    <tr>
-	    	<% @order_items.each do |order_item| %>
-				<td><%= order_item.item.name %></td>
-				<td><%= order_item.tax_item_price %></td>
-				<td><%= order_item.number %></td>
-				<td><%= order_item.tax_item_price * order_item.number %></td>
-			<% end %>
+			<td><%= order_item.item.name %></td>
+			<td><%= order_item.tax_item_price %></td>
+			<td><%= order_item.number %></td>
+			<td><%= order_item.tax_item_price * order_item.number %></td>
+		</tr>
+		<% end %>
 	    </tr>
 	  </tbody>
 	</table>
