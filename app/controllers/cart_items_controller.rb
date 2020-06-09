@@ -7,17 +7,25 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
-    if current_end_user.cart_items.exists?(item_id: @cart_item.item_id)
-      @cart_item = current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
-      # @cart_item.number += params[:cart_item][:number].to_iも同義
-      num = @cart_item.number + params[:cart_item][:number].to_i
-      @cart_item.update(number: num)
-      # @cart_item.update(number: @cart_item.number + params[:cart_item][:number].to_i)
-      # numberカラムにnumを入れる。15行目の記述は13~14行目を一行で表した記述
-      redirect_to cart_items_path
+    # 個数選択をした場合、すでにカートに同一商品が存在するかどうかで条件分岐
+    if params[:cart_item][:number].to_i != 0
+      if current_end_user.cart_items.exists?(item_id: @cart_item.item_id)
+        # カートに同一商品が存在した場合はitem_idで当該商品を探索する
+        @cart_item = current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
+        num = @cart_item.number + params[:cart_item][:number].to_i
+        # @cart_item.number += params[:cart_item][:number].to_iも同義
+        @cart_item.update(number: num)
+        # numberカラムにnumを入れる。一行で表すと19行目
+        # @cart_item.update(number: @cart_item.number + params[:cart_item][:number].to_i)
+        redirect_to cart_items_path, notice: "商品の数量が追加されました。"
+      else
+        @cart_item.save
+        redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+      end
     else
-      @cart_item.save
-      redirect_to cart_items_path
+      @item = Item.find(params[:cart_item][:item_id])
+      @genres = Genre.all
+      redirect_to item_path(@item), notice: '数量を選択してください。'
     end
   	# @cart_item = CartItem.new(cart_item_params)
   	# @cart_item.end_user_id = current_end_user.id

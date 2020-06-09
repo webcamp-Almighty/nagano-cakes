@@ -44,7 +44,7 @@
 		<!--カートに入れる.ボタンの位置を調整する必要あり-->
 		<%= form_for(@cart_item, url: '/cart_items') do |f| %>
 			<%= f.hidden_field :item_id, :value => @item.id %>
-			<%= f.select :number, [['個数選択',''],['１個',1],['２個',2],['３個',3],['４個',4],['５個',5]] %>
+			<%= f.select :number, [['個数選択',0],['１個',1],['２個',2],['３個',3],['４個',4],['５個',5]] %>
 			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 		<% end %>
 	</div>
