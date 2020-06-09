@@ -21,6 +21,4 @@ class EndUser < ApplicationRecord
   	total
   end
 
-
-
 end

@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
         #@order_item.order_status = 0 #デフォルト値設定したら、この記述いらない
         @order_item.save
       end
-        redirect_to finish_orders_path
+      current_end_user.cart_items.destroy_all
+      redirect_to finish_orders_path
     else
       #@total_price = @shipping_fees + current_end_user.cart_item_sum
       @cart_items = CartItem.where(end_user_id: current_end_user.id)
