@@ -11,7 +11,7 @@
     <tbody>
     	<tr>
             <!--購入者-->
-    		<td><%= @order.name %></td>
+    		<td><%= @order.end_user.last_name %></td>
 
     		<!-- 配送先 -->
     		<td><%= @order.address %></td>
@@ -46,19 +46,30 @@
             <th>数量</th>
             <th>小計</th>
             <th>製作ステータス</th>
+            <th>更新</th>
         </tr>
     </thead>
     <tbody>
         <% @order_items.each do |order_item| %>
         <tr>
             <!--商品名-->
-            <td><%= @order_item.item.name %></td>
+            <td><%= order_item.item.name %></td>
 　　　　　　　<!--単価（税込）-->
+            <td><%= order_item.tax_item_price %></td>
             <!--数量-->
+            <td><%= order_item.number %></td>
             <!--小計-->
-            <!--製作ステータス-->
-        </tr>
+            <td><%= order_item.tax_item_price * order_item.number %></td>
+            <!--現在の製作ステータス-->
+            <td><%= order_item.item_status_i18n %></td>
+
          <% end %>
+            <td><%= form_with(model: @order_item, url:admins_order_item_path(@order),method: :patch) do |f| %>
+                  <%= f.select :item_status, OrderItem.item_statuses_i18n.invert %>
+                  <%= f.submit "更新する", class: "btn btn-primary" %>
+                <% end %>
+            </td>
+        </tr>
     </tbody>
 </table>
 
