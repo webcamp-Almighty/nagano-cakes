@@ -1,31 +1,6 @@
 <div class="row">
-	<!--ジャンル検索の場合は、ジャンル一覧を表示する-->
-
-	<div class="col-xs-4">
-
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">ジャンル検索</h3>
-		  </div>
-		  <div class="panel-body">  <!--borderが消えない-->
-		    <table class="table table-borderless">
-
-			  <tbody>
-			  		<% @genres.each do |genre| %>
-			  		<tr>
-			  		  <td>
-			  			<!--遷移先はジャンル一覧-->
-				  		<%= link_to genre.name, '#' %>
-				  	  </td>
-			  		<% end %>
-			  		</tr>
-			  </tbody>
-			</table>
-		  </div>
-		</div>
-
-	</div>
-
+	<%= render 'items/genrebar', genres: @genres %>
+	<!-- ジャンル検索サイドバーの呼び出し -->
 	<div class="col-xs-4">
 
 		<div class=""><!--画像サイズについて確認-->
