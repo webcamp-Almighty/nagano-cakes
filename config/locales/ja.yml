@@ -11,6 +11,14 @@ ja:
       payment_method: #カラム名
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
+        
+
+    order_item:
+      item_status:
+        creat_not: "製作不可"
+        creat_wait: "製作待"
+        creat_now: "製作中"
+        creat_finish: "製作完了"
 
 
 
@@ -45,3 +53,5 @@ ja:
 
     phone_number:
       formats: ['0####-#-####', '0###-##-####', '0##-###-####', '0#-####-####']
+
+
