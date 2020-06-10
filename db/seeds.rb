@@ -7,12 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
    email: 'admin@admin.com',
-   password: 'password',
+   password: 'adminadmin',
 )
 
+#sample end_user
 EndUser.create!(
-   email: 'test@test.com',
-   password: 'password'
+   email: 'user@admin.com',
+   password: 'adminadmin',
    first_name: 'サンプル',
    last_name: '太郎',
    first_name_kana: 'サンプル',
@@ -20,33 +21,11 @@ EndUser.create!(
    postal_code: '140-0000',
    address: '東京都品川区1-12-123',
    telephone_number: '012-3456-7890',
-   email: 'test@test.com',
-   password: 'password',
-   encrypted_password: 'password',
    is_deleted: false
 )
 
-Genre.create!(
-	name: 'ケーキ',
-	is_invalid:1
-)
-
-Genre.create!(
-	name: 'プリン',
-	is_invalid:1
-)
-
-Genre.create!(
-	name: '焼き菓子',
-	is_invalid:1
-)
-
-Genre.create!(
-	name: 'キャンディ',
-	is_invalid:1
-)
-
-#50persons sample_data
+#50 persons sample_data,
+#japanese => config/locale/ja.yml
 
 50.times do |n|
   first_name = Faker::Name.first_name
@@ -70,7 +49,6 @@ Genre.create!(
     telephone_number: telephone_number,
     email: email,
     password: 'password',
-    encrypted_password: 'password',
     is_deleted: is_deleted
   )
 
@@ -83,3 +61,75 @@ Genre.create!(
 
 end
 
+
+#is_invalid != 1  => true
+
+Genre.create!(
+  name: 'ケーキ',
+  is_invalid:true
+)
+
+Genre.create!(
+  name: 'プリン',
+  is_invalid:true
+)
+
+Genre.create!(
+  name: '焼き菓子',
+  is_invalid:true
+)
+
+Genre.create!(
+  name: 'キャンディ',
+  is_invalid:true
+)
+
+
+#3 items
+Item.create!(
+  genre_id: 1,
+  name: 'メロンシャンティ',
+  price: 600,
+  is_soldout:false,
+  image:File.open("./app/assets/images/image01.jpg"),
+  introduction: "よく完熟したメロンをくりぬいて、カスタードクリームと果肉、生クリームを詰め込んで作られたとてもぜいたくなケーキです"
+)
+
+
+
+Item.create!(
+  genre_id: 1,
+  name: 'ピカケーキ',
+  price: 1500,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image02.jpg"),
+  introduction: "みんな大好き、かわいいピカチュウのケーキです"
+)
+
+Item.create!(
+  genre_id: 2,
+  name:'なめらか濃厚プリン',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image05.jpg"),
+  introduction: "濃厚な卵とミルクの甘み際立つ絶品の味わいです"
+  )
+
+Item.create!(
+  genre_id: 3,
+  name:'マカロン',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image04.jpg"),
+  introduction: "濃厚な卵とミルクの甘み際立つ絶品の味わいです"
+  )
+
+
+Item.create!(
+  genre_id: 4,
+  name:'ペロペロキャンディ',
+  price:100,
+  is_soldout: true,
+  image:File.open("./app/assets/images/image06.jpg"),
+  introduction: "カラフルで楽しい棒付きキャナディです。"
+  )
