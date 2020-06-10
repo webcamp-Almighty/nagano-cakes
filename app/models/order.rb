@@ -2,15 +2,27 @@ class Order < ApplicationRecord
 	belongs_to :end_user #追記
 	has_many :order_items
 
-	enum order_status:{ waiting: 0, confirmation: 1, progress: 2, preparing: 3, shipped: 4 }
+	enum order_status: { waiting: 0,
+						confirmation: 1,
+						progress: 2,
+						preparing: 3,
+						shipped: 4
+	}
 
 	enum payment_method: {
 		credit_card: 0,
 		bank_transfer: 1
 	}
 
+	validates :name, presence: true
+	validates :postal_code, presence: true
+	validates :address, presence: true
+	validates :payment_method, presence: true
+	validates :order_status, presence: true
 
 
+
+#商品合計
   def total_price
     total = 0
     order_items.each do |order_item|
