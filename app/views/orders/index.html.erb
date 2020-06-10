@@ -18,7 +18,6 @@
                 <%= order_item.created_at.to_s(:datetime_jp) %>
             </td>
 
-            <!--他に良い書き方があるのでは-->
             <td><!--配送先-->
                 <%= order_item.order.address %>
             </td>
@@ -29,7 +28,7 @@
             <!--total_priceを使う, showでも使えるように-->
             <!--もっといい書き方ありそう、変数でまとめたい-->
             <td><!--支払い金額 = 単価*小計 + 800 -->
-                <%= order_item.tax_item_price * order_item.number + 800 %>
+                <%= order_item.tax_item_price * order_item.number + order.shipping_fees %>
             </td>
 
             <td><!--注文ステータス、入金情報-->

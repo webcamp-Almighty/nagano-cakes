@@ -49,9 +49,8 @@
 	  		<!--住所データはDeliveryモデルから取ってこれる-->
 	    	<%= radio_button_tag :radio_button, 2 %>
 	    	<%= f.label :address, '登録先住所から選択',style:'display: inline-block;' %><br />
-	    	<!--セレクトボタン-->
+	    	<!--セレクトボタン--><!--:idから:nameに変更 0610-->
 	    	<%= f.collection_select :delivery_id, current_end_user.deliveries, :name, :address, :include_blank => true %>
-	    	<!--:idから:nameに変更 0610-->
 	  	</div>
 	  </div>
 	  <!--新しい住所-->
