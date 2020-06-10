@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
         @cart_item.update(number: num)
         # numberカラムにnumを入れる。一行で表すと19行目
         # @cart_item.update(number: @cart_item.number + params[:cart_item][:number].to_i)
-        redirect_to cart_items_path, notice: "商品の数量が追加されました。"
+        redirect_to cart_items_path, notice: "商品の数量が加算されました。"
       else
         @cart_item.save
         redirect_to cart_items_path, notice: "カートに商品が追加されました。"
@@ -25,15 +25,8 @@ class CartItemsController < ApplicationController
     else
       @item = Item.find(params[:cart_item][:item_id])
       @genres = Genre.all
-      redirect_to item_path(@item), notice: '数量を選択してください。'
+      redirect_to request.referer, notice: '数量を選択してください。'
     end
-  	# @cart_item = CartItem.new(cart_item_params)
-  	# @cart_item.end_user_id = current_end_user.id
-   # 	if @cart_item.save
-   #    redirect_to cart_items_path, notice: "カートに商品が追加されました。"
-   #  else
-   #    redirect_back(fallback_location: root_path)
-   #  end
   end
 
   def update
