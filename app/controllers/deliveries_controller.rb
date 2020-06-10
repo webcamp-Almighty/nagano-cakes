@@ -29,7 +29,8 @@ class DeliveriesController < ApplicationController
   end
 
   private
-  def delivery_params #userが書くパラメータのみparamsに記入
-  	params.require(:delivery).permit(:name, :postal_code, :address)
+
+  def delivery_params #ここのパラメータ
+    params.require(:delivery).permit(:name, :postal_code, :address)
   end
 end
