@@ -131,5 +131,5 @@ Item.create!(
   price:100,
   is_soldout: true,
   image:File.open("./app/assets/images/image06.jpg"),
-  introduction: "カラフルで楽しい棒付きキャナディです。"
+  introduction: "カラフルで楽しい棒付きキャンディです。"
   )
