@@ -1,24 +1,25 @@
 <div class="row">
 	<h4 class="col-md-2 col-md-offset-1">配送先登録/一覧</h4>
 </div>
+
 <div class="row">
-	<table class="col-md-10">
-		<%= form_for(@delivery, url: deliveries_path) do |f| %>
-		<tr>
-			<th>郵便番号(ハイフンなし)</th>
-			<td colspan="3"><%= f.text_field :postal_code %></td>
-		</tr>
-		<tr>
-			<th>住所</th>
-			<td colspan="3"><%= f.text_field :address, :size => "60" %></td>
-		</tr>
-		<tr>
-			<th>宛名</th>
-			<td colspan="2"><%= f.text_field :name %></td>
-			<td><%= f.submit '登録する', class: "btn btn-default btn-success" %></td>
-		</tr>
-		<% end %>
-	</table>
+	<%= form_for(@delivery, url: deliveries_path) do |f| %>
+		<table class="col-md-10">
+			<tr>
+				<th>郵便番号(ハイフンなし)</th>
+				<td colspan="3"><%= f.text_field :postal_code %></td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td colspan="3"><%= f.text_field :address, :size => "60" %></td>
+			</tr>
+			<tr>
+				<th>宛名</th>
+				<td colspan="2"><%= f.text_field :name %></td>
+				<td><%= f.submit '登録する', class: "btn btn-default btn-success" %></td>
+			</tr>
+		</table>
+	<% end %>
 </div>
 
 <div class="row">

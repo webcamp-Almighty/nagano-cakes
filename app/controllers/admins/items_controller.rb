@@ -23,7 +23,6 @@ before_action :authenticate_end_user!
 
   def show
     @item = Item.find(params[:id])
-    #@genre = Genre.find(params[:id])
   end
 
   def edit
