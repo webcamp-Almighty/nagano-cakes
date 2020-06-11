@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :favorites, dependent: :destroy#いいね
 
   #boolean型のバリデーション
   validates :is_deleted, inclusion: { in: [true, false] }

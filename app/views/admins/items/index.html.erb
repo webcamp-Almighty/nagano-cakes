@@ -14,7 +14,6 @@
 	  		<th>税抜価格</th>
 	  		<th>ジャンル</th>
 	  		<th>ステータス</th>
-	  		<th>編集</th>
 	  	</tr>
 	  </thead>
 
@@ -22,7 +21,7 @@
 	  	<% @items.each do |item| %>
 	  	  <tr>
 	  		<td><%= item.id %></td>
-	  		<td><%= link_to item.name, item_path(item) %></td>
+	  		<td><%= link_to item.name, admins_item_path(item.id) %></td>
 	  		<td><%= item.price %></td>
 	  		<td><%= item.genre.name %></td>
 	  		<td>
@@ -32,8 +31,6 @@
 	  				販売中
 	  			<% end %>
 	  		</td>
-	  		<td><%= link_to "詳細", admins_item_path(item.id), class: " btn btn-default", style: "border-radius: 50%" %></td>
-
 	  	  </tr>
 	  	<% end %>
 

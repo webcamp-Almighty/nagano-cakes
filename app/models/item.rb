@@ -3,6 +3,11 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_items
   attachment :image #refile用
+  has_many :favorites, dependent: :destroy#いいね
+  
+  def favorited_by?(end_user)
+     favorites.where(end_user_id: end_user.id).exists?
+  end
 
   validates :name, presence: true
   validates :price, presence: true
