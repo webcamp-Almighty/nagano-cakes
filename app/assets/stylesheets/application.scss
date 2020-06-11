@@ -58,6 +58,10 @@ nav {
 }
 
 span#link {
-  border-bottom:solid 1px blue;
+  border-bottom:solid 1px blue; //ログインページのリンク先
   color: blue;
+}
+
+.admin-header {
+  background-color: #006c61;
 }

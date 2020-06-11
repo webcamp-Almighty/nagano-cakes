@@ -24,15 +24,12 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-  resources :items, only: [:index, :show] do
-    get :search, on: :collection
-  end
+  resources :items, only: [:index, :show]
 
   resources :cart_items, only: [:create, :index, :update, :destroy]
   delete '/cart_items_delete' => 'cart_items#empty', as: 'cart_items_delete'
 
    post '/orders/detail' => 'orders#detail', as: 'orders_detail' #修正
-  # get '/orders/finish' => 'orders#finish'
   resources :orders, only: [:index, :new, :create, :show] do
     collection do
       get 'detail'
