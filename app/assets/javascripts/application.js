@@ -17,3 +17,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+// $(function(){
+//   $(".list-1").addClass("background");
+//   $(".background").css("background-color", "#C8FE2E");
+// });
+
