@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 		 :telephone_number, :postal_code, :address, :is_deleted])
 	end
 
-    def reject_user
+    def reject_user #退会した人はログインできなくする
     @end_user = User.find_by(email: params[:user][:email].downcase)
     if @end_user
       if (@end_user.valid_password?(params[:user][:password]) && (@end_user.active_for_authentication? == false))
