@@ -1,12 +1,12 @@
-<div class="container">
-	<div class="row">
-		<h3>ショッピングカート</h3>
-		<div class="col-md-2 col-md-offset-10">
-			<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-default btn-danger" %>
-		</div>
+<div class="row">
+	<h3>ショッピングカート</h3>
+	<div class="col-md-2 col-md-offset-10">
+		<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-default btn-danger" %>
 	</div>
+</div>
 
-	<div class="row">
+
+<div class="row">
 <table class="col-md-12">
 	<thead>
 	<tr>
@@ -46,6 +46,7 @@
 </table>
 </div>
 
+
 <div class="row">
 	<div class="col-md-1">
 		<%= link_to "買い物を続ける", items_path, class: "btn btn-default btn-primary" %>
@@ -69,4 +70,3 @@
 		</div>
 	</div>
 <% end %>
-</div>
