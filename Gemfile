@@ -80,3 +80,5 @@ gem 'rails-i18n'
 gem 'faker'
 
 gem 'jp_prefecture'
+
+gem 'font-awesome-rails'

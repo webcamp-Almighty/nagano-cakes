@@ -1,4 +1,4 @@
-<div class="row">
+ <div class="row">
 	<%= render 'genrebar', genres: @genres %>
 	<!-- ジャンル検索サイドバーの呼び出し -->
 	<div class="col-xs-10">
@@ -15,12 +15,41 @@
 				<%= link_to item_path(item) do %>
 					<%= attachment_image_tag(item, :image, fallback: 'no_image.jpg', size: '220x165') %><br>
 					<%= item.name %><br>
-					￥<%= converting_to_jpy(item.price) %>
+					￥<%= converting_to_jpy(item.price) %><br>
+					<!-- いいな -->
+                    <% if item.favorited_by?(current_end_user) %>
+                      <%= link_to item_favorites_path(item), method: :delete do %>
+                     <span class="glyphicon glyphicon-star"><%= item.favorites.count%></span>
+                    <% end %>
+
+                    <% else %>
+                      <%= link_to item_favorites_path(item), method: :post do %>
+                      <span class="glyphicon glyphicon-star-empty"><%= item.favorites.count %></span>
+                    <% end %>
+				    <% end %>
 				<% end %>
 			</div>
 			<% end %>
 		</div>
-
+		<h2>人気の商品</h2>
+		  <div class="row">
+           <!-- ランキング -->
+           <% count = 1 %>
+		    <% @item_ranking.each do |item| %>
+			  <div class="col-xs-3">
+			   <%= "いいね数 #{count}位" %>
+				<%= link_to item_path(item) do %>
+					<%= attachment_image_tag(item, :image, fallback: 'no_image.jpg', size: '220x165') %><br>
+					<%= item.name %><br>
+					￥<%= converting_to_jpy(item.price) %><br>
+					<!-- いいな -->
+                    <span class="glyphicon glyphicon-star color-red"><%= item.favorites.count%></span>
+                    <% count += 1 %>
+				<% end %>
+			  </div>
+			<% end %>
+		  </div>
+		<%#= @item_rank %>
 	</div>
 	<!--ページネーション機能ついか-->
 </div>
