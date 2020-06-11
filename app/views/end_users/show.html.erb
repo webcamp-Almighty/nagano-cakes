@@ -2,49 +2,52 @@
 	<h2>マイページ</h2>
 </div>
 
-<table>
-	<tr>
-		<td>登録情報</td>
-		<td><%= link_to "編集する", edit_end_users_path, class: "btn btn-default btn-primary" %></td>
-	    <td><%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-default btn-primary" %></td>
-	</tr>
-</table>
+<div class="row">
 
-<table class="end_user table">
-	<tr>
-		<th>氏名</th>
-		<td><%= @end_user.last_name %>  <%= @end_user.first_name %></td>
-	</tr>
-	<tr>
-		<th>カナ</th>
-		<td><%= @end_user.last_name_kana %>  <%= @end_user.first_name_kana %></td>
-	</tr>
-	<tr>
-		<th>郵便番号</th>
-		<td><%= @end_user.postal_code %></td>
-	</tr>
-	<tr>
-		<th>住所</th>
-		<td><%= @end_user.address %></td>
-	</tr>
-	<tr>
-		<th>電話番号</th>
-		<td><%= @end_user.telephone_number %></td>
-	</tr>
-	<tr>
-		<th>メールアドレス</th>
-		<td><%= @end_user.email %></td>
-	</tr>
-</table>
+	<div class="">
+		<h2>登録情報</h2><!--ボタンのサイズ-->
+		<%= link_to "編集する", edit_end_users_path, class: "btn btn-default btn-primary" %>
+	    <%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-default btn-primary" %>
+	</div>
 
-<table>
-	<tr>
-		<td>配送先</td>
-		<td><%= link_to "一覧を見る", deliveries_path, class: "btn btn-default btn-primary" %></td>
-	</tr>
-	<tr>
-		<td>注文履歴</td>
-		<td><%= link_to "一覧を見る", orders_path, class: "btn btn-default btn-primary" %></td>
-	</tr>
-</table>
+	<table class="table">
+		<tr>
+			<th>氏名</th>
+			<td><%= @end_user.last_name %>  <%= @end_user.first_name %></td>
+		</tr>
+		<tr>
+			<th>カナ</th>
+			<td><%= @end_user.last_name_kana %>  <%= @end_user.first_name_kana %></td>
+		</tr>
+		<tr>
+			<th>郵便番号</th>
+			<td><%= @end_user.postal_code %></td>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<td><%= @end_user.address %></td>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<td><%= @end_user.telephone_number %></td>
+		</tr>
+		<tr>
+			<th>メールアドレス</th>
+			<td><%= @end_user.email %></td>
+		</tr>
+	</table>
+
+</div>
+
+	<table class="table">
+
+		<tr>
+			<td>配送先</td>
+			<td><%= link_to "一覧を見る", deliveries_path, class: "btn btn-default btn-primary" %></td>
+		</tr>
+		<tr>
+			<td>注文履歴</td>
+			<td><%= link_to "一覧を見る", orders_path, class: "btn btn-default btn-primary" %></td>
+		</tr>
+	</table>
 

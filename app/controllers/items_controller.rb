@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     #条件分岐が必要
     if params[:genre_id]
     #if params[:id]
-    	@genre = Genre.find(params[:genre_id])#ここのコードの意味
+    	@genre = Genre.find(params[:genre_id])
       #@genre = Genre.find(params[:id])
       @items = @genre.items
     end
