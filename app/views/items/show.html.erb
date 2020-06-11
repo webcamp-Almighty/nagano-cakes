@@ -1,33 +1,30 @@
 <div class="row">
 	<%= render 'items/genrebar', genres: @genres %>
 	<!-- ジャンル検索サイドバーの呼び出し -->
-	<div class="col-xs-4">
+	<div class="col-xs-5">
 
 		<div class=""><!--画像サイズについて確認-->
 
-		    <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '300x200') %>
+		    <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '440x330') %>
+
 		</div>
 	</div>
 
-	<div class="col-xs-4"><!--文字の大きさを変更する-->
+	<div class="col-xs-5"><!--文字の大きさを変更しました-->
 		<h3><%= @item.name %></h3>
 
-		<%= @item.introduction %><br>
+		<p><%= @item.introduction %></p><br>
 
-		¥<%= converting_to_jpy(@item.price) %>(税込)
+		<h4>¥<%= converting_to_jpy(@item.price) %>(税込)<h4><br>
 
-		<!--カートに入れる.ボタンの位置を調整する必要あり-->
+		<!--カートに入れる.ボタンの位置は右端に調整-->
+		<div class="pull-right">
 		<%= form_for(@cart_item, url: '/cart_items') do |f| %>
 			<%= f.hidden_field :item_id, :value => @item.id %>
 			<%= f.select :number, [['個数選択',0],['１個',1],['２個',2],['３個',3],['４個',4],['５個',5]] %>
 			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 		<% end %>
-	</div>
-
-
-
-
+		</div>
 	</div>
 
 </div>
-
