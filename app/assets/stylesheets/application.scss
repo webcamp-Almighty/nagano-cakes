@@ -56,3 +56,12 @@ li mypicture {
 nav {
    margin: 0 0 0 auto;//左マージンに「auto」
 }
+
+span#link {
+  border-bottom:solid 1px blue; //ログインページのリンク先
+  color: blue;
+}
+
+.admin-header {
+  background-color: #006c61;
+}

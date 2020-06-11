@@ -14,10 +14,10 @@ Admin.create!(
 EndUser.create!(
    email: 'user@admin.com',
    password: 'adminadmin',
-   first_name: 'サンプル',
-   last_name: '太郎',
-   first_name_kana: 'サンプル',
-   last_name_kana: 'タロウ',
+   first_name: '太郎',
+   last_name: 'サンプル',
+   first_name_kana: 'タロウ',
+   last_name_kana: 'サンプル',
    postal_code: '140-0000',
    address: '東京都品川区1-12-123',
    telephone_number: '012-3456-7890',
@@ -30,8 +30,8 @@ EndUser.create!(
 50.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  first_name_kana = "サンプル"
-  last_name_kana = "タロウ"
+  first_name_kana = "タロウ"
+  last_name_kana = "サンプル"
   postal_code = Faker::Address.postcode
   address = Faker::Address.state + Faker::Address.city
   telephone_number = Faker::PhoneNumber.cell_phone

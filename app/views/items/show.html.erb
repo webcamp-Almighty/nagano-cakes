@@ -5,7 +5,8 @@
 
 		<div class=""><!--画像サイズについて確認-->
 
-		    <%= attachment_image_tag(@item, :image, fallback: 'no_image.jpg', size: '440x330') %>
+		    <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '440x330') %>
+
 		</div>
 	</div>
 
