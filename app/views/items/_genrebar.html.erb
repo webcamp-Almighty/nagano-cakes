@@ -1,23 +1,21 @@
 <!--ジャンル検索の場合は、ジャンル一覧を表示する-->
-<div class="col-xs-2">
-	<div class="panel panel-default" >
-		<div class="panel-heading">
-			<h4 class="text-center">ジャンル検索</h4>
-		</div>
-		<table class="table">
-			<tbody>
-			<% genres.each do |genre| %>
-				<% if genre.is_invalid == true %>
-				<tr>
-				  <td><!--コントローラとビューはセットで考える.下の行の書き方でもok-->
-		  		    <%= link_to genre.name, items_path(genre_id: genre.id) %>
-		  		    <%#= link_to genre.name, items_path(id: genre.id) %>
-		  	      </td>
-				</tr>
-				<% end %>
-			<% end %>
-			</tbody>
-		</table>
+<div class="panel panel-default" >
+	<div class="panel-heading">
+		<h4 class="text-center">ジャンル検索</h4>
 	</div>
+	<table class="table">
+		<tbody>
+		<% genres.each do |genre| %>
+			<% if genre.is_invalid == true %>
+			<tr>
+			  <td><!--コントローラとビューはセットで考える.下の行の書き方でもok-->
+	  		    <%= link_to genre.name, items_path(genre_id: genre.id) %>
+	  		    <%#= link_to genre.name, items_path(id: genre.id) %>
+	  	      </td>
+			</tr>
+			<% end %>
+		<% end %>
+		</tbody>
+	</table>
 </div>
 

@@ -36,6 +36,8 @@
 	    <%#= render 'items/index', items: @records %>
 	<% end %>
 
-
 <!--テスト-->
-<%= @records %>
+<% @records.each do |record| %>
+<%= record.last_name %>
+<%= record.last_name %>
+<% end %>

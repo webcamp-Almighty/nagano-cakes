@@ -1,11 +1,13 @@
 <div class="row">
-	<%= render 'items/genrebar', genres: @genres %>
-	<!-- ジャンル検索サイドバーの呼び出し -->
+	<div class="col-xs-2">
+	  <%= render 'items/genrebar', genres: @genres %>
+	  <%= render 'homes/snslink' %>
+	</div>
 	<div class="col-xs-5">
 
-		<div class=""><!--画像サイズについて確認-->
+		<div class="pull-right"><!--画像サイズについて確認-->
 
-		    <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '440x330') %>
+		    <%= attachment_image_tag(@item, :image, fallback: 'no_image.jpg', size: '440x330') %>
 
 		</div>
 	</div>
