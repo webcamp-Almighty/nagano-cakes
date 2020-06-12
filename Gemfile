@@ -82,3 +82,5 @@ gem 'faker'
 gem 'jp_prefecture'
 
 gem 'font-awesome-rails'
+
+gem 'kaminari-bootstrap', '~> 3.0.1'
