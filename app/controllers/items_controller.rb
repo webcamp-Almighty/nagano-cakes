@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def index
   	@items = Item.all
   	@genres = Genre.all
-
+    @items = Item.page(params[:page]).reverse_order.per(8)
     #条件分岐が必要
     if params[:genre_id]
     #if params[:id]
