@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resource :end_users, only: [:show, :edit, :update]
   get '/end_users/confirm'
   put '/end_users/:id/hide' => 'end_users#hide', as: 'end_users_hide'
+  get '/end_users/password' => 'end_users#edit_password'   #パスワード変更用
+  put 'edit_users/password' => 'end_users#update_password'
 
   devise_for :end_users
 
