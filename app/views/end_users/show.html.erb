@@ -7,7 +7,9 @@
 	<div class="">
 		<h2>登録情報</h2><!--ボタンのサイズ-->
 		<%= link_to "編集する", edit_end_users_path, class: "btn btn-default btn-primary" %>
-	    <%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-default btn-primary" %>
+
+		<!--ここの遷移がうまくいかない---edit_end_user_password_pathから変更-->
+	    <%= link_to "パスワードを変更する", end_users_password_path, class: "btn btn-default btn-primary" %>
 	</div>
 
 	<table class="table">
@@ -42,11 +44,11 @@
 	<table class="table">
 
 		<tr>
-			<td>配送先</td>
+			<th>配送先</th>
 			<td><%= link_to "一覧を見る", deliveries_path, class: "btn btn-default btn-primary" %></td>
 		</tr>
 		<tr>
-			<td>注文履歴</td>
+			<th>注文履歴</th>
 			<td><%= link_to "一覧を見る", orders_path, class: "btn btn-default btn-primary" %></td>
 		</tr>
 	</table>
