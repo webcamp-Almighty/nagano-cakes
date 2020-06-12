@@ -17,7 +17,7 @@
 					<%= item.name %><br>
 					￥<%= converting_to_jpy(item.price) %><br>
 					<!-- いいな -->
-                    <% if item.favorited_by?(current_end_user) %>
+                    <% if user_signed_in?　&& item.favorited_by?(current_end_user) %>
                       <%= link_to item_favorites_path(item), method: :delete do %>
                      <span class="glyphicon glyphicon-star"><%= item.favorites.count%></span>
                     <% end %>

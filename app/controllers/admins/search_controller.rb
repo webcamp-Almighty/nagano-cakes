@@ -1,6 +1,6 @@
 class Admins::SearchController < ApplicationController
   
-  before_action :authenticate_end_user!
+  before_action :authenticate_admin!
 
   def search
     @model = params["search"]["model"]
