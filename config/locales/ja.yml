@@ -11,7 +11,7 @@ ja:
       payment_method: #カラム名
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
-        
+
 
     order_item:
       item_status:
