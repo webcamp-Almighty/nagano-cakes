@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
     	@genre = Genre.find(params[:genre_id])
       #@genre = Genre.find(params[:id])
       @items = @genre.items
+      @items = Item.page(params[:page]).reverse_order.per(8)
     end
 
     @item_ranking = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
@@ -22,12 +23,5 @@ class ItemsController < ApplicationController
   	@genres = Genre.all
   end
 
-  # def search
-  #   if params[:name].present?
-  #     @items = Item.where('name LIKE ?', "%#{params[:name]}%")
-  #   else
-  #     @items = Item.none
-  #   end
-  # end
 
 end
