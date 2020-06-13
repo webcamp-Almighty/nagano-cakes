@@ -3,8 +3,10 @@
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-   <%= form_with(model: @genre, url:admins_genre_path) do |f| %>
-      <%#= render 'shared/error_messages' %>
+   <%= form_with(model: @genre, url:admins_genre_path, local: true) do |f| %>
+
+   <%= render partial: 'layouts/error_messages', locals: { obj: @genre} %>
+      <%#= render 'layouts/error_messages', obj: @genre %>
 
       <%= f.label :ジャンル名 %>
       <%= f.text_field :name, class: 'form-control' %>
