@@ -1,7 +1,7 @@
 class Admins::ItemsController < ApplicationController
-  
+
 before_action :authenticate_admin!
-  
+
   def new
     @item = Item.new
     @items = Item.all
@@ -10,9 +10,9 @@ before_action :authenticate_admin!
   def create
     @item = Item.new(item_params)
       if @item.save
-        redirect_to items_path
+        redirect_to admins_items_path, success: '登録に成功しました'
       else
-        render new
+        render 'new'
       end
   end
 
