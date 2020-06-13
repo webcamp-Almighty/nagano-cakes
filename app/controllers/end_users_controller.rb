@@ -30,7 +30,7 @@ class EndUsersController < ApplicationController
 
   def update_password
     if current_end_user.update_with_password(user_params)
-        redirect_to end_users_path(current_end_user.id)
+        redirect_to root_path, success: 'パスワードを変更しました'
       else
         render :edit_password
     end

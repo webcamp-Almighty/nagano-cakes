@@ -32,10 +32,10 @@
 	    </tr>
 	    <tr><!--total_priceについて、orderモデルで記述-->
 			<td><%= converting_to_jpy(@order.total_price) %></td>
-
+			<!--送料-->
 			<td><%= @order.shipping_fees %></td>
 
-			<!--コントローラで記述したい-->
+
 			<td><%= converting_to_jpy(@order.total_price + @order.shipping_fees) %></td>
 	    </tr>
 	</table>
