@@ -1,7 +1,5 @@
 class Admins::ItemsController < ApplicationController
 
-before_action :authenticate_admin!
-
   def new
     @item = Item.new
     @items = Item.all
@@ -19,6 +17,7 @@ before_action :authenticate_admin!
   def index
     @genres = Genre.all
     @items = Item.all
+    @items = Item.page(params[:page]).per(15)
   end
 
   def show
