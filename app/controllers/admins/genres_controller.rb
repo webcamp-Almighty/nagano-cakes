@@ -13,7 +13,7 @@ class Admins::GenresController < ApplicationController
   	  redirect_to admins_genres_path
   	else
   	  @genres = Genre.all
-  	  render 'index'
+  	  render 'index', danger: 'ジャンルを選択してください'
   	end
   end
 
@@ -26,7 +26,7 @@ class Admins::GenresController < ApplicationController
       if @genre.update(genre_params)
   	    redirect_to admins_genres_path
   	  else
-  	    render edit
+  	    render 'edit', danger: 'ジャンルを選択してください'
   	  end
   end
 
