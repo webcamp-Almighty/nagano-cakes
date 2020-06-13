@@ -1,8 +1,11 @@
 <div class="row">
 	<h3>ショッピングカート</h3>
-	<div class="col-md-2 col-md-offset-10">
-		<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-default btn-danger" %>
-	</div>
+	<!-- カートに商品が存在する場合のみ「空にするボタン」出現 -->
+	<% if current_end_user.cart_items.exists? %>
+		<div class="pull-right">
+			<%= link_to 'カートを空にする', cart_items_delete_path, method: :delete, data: {confirm: "本当にカートを空にしてもよろしいですか？"}, class: "btn btn-default btn-danger" %>
+		</div>
+	<% end %>
 </div>
 
 
@@ -21,22 +24,22 @@
 	<% @cart_items.each do |cart_item| %>
 	<tr>
 		<td>
-			<%= attachment_image_tag cart_item.item, :image, size: "50x40", class: "img-rounded pull-left", fallback: "no_image.jpg" %>
+			<%= attachment_image_tag cart_item.item, :image, size: "80x60", class: "img-rounded pull-left", fallback: "no_image.jpg" %>
 			<%= cart_item.item.name %>
 		</td>
 		<td><%= converting_to_jpy(cart_item.item.price) %>
-			<!-- 3桁区切りで表示されるようcart_items_helper.rbに定義 -->
+			<!-- 3桁区切りで表示されるようapplication_helper.rbに定義 -->
 		</td>
 		<td>
 			<%= form_for(cart_item) do |f| %>
 				<%#= f.select :number, (1..20).to_a %><!--参考：20個制限する場合の書き方 -->
-				<%= f.number_field :number %>
+				<%= f.number_field :number, min: 1%>
 				<%= f.submit "変更", class: "btn btn-default btn-primary" %>
 			<% end %>
 		</td>
 		<td>
 			<%= converting_to_jpy(cart_item.item.price * cart_item.number) %>
-			<!-- cart_items_helper.rb参照 -->
+			<!-- application_helper.rb参照 -->
 		</td>
 		<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: "この商品を削除してもよろしいですか？"}, class: "btn btn-default btn-danger" %>
 		</td>
