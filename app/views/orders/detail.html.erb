@@ -64,9 +64,10 @@
 	    <tr>
 			<th>お届け先</th>
 			<td><!--ラジオボタンの番号によって表示を変える-->
-				<%= @order.postal_code %>
-				<%= @order.address %>
-				<%= @order.name %>
+				<%# if @order[:radio_button] != "2" %>
+					〒<%= @order.postal_code %>
+					<%= @order.address %>
+					<%= @order.name %>
 			</td>
 	    </tr>
 
@@ -76,8 +77,9 @@
 	<!--注文情報確定ボタン-->
 	<div class="row">
 		<%= form_with(model: @order,url: orders_path,local:true) do |f| %>
-			<!--購入者名 追加-->
+			<!--お届け先氏名 -->
 			<%= f.hidden_field :name, :value => @order.name %>
+
 			<!--支払い方法-->
 			<%= f.hidden_field :payment_method, :value => @order.payment_method %>
 			<!--お届け先-->
