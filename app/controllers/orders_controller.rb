@@ -60,8 +60,6 @@ class OrdersController < ApplicationController
       @order.address = params[:order][:name]
       @order.name = params[:order][:address]
     end
-    #wakarinikui
-    #@total_price = converting_to_jpy(current_end_user.cart_item_sum)
   end
 
   def finish

@@ -3,7 +3,7 @@
 
 		<!--画像サイズについて確認-->
 
-		<%= attachment_image_tag(@item, :image, :fill, 50, 50, fallback: 'no_image.jpg', size: '250x200') %>
+		<%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '250x200') %>
 	</div>
 
 	<div class="col-xs-8">
@@ -26,7 +26,8 @@
 
 	<div class="col-xs-8">
 		<span><b>税込価格(税抜価格)</b>
-			<h4><%= @item.price*1.1 %>(<%= @item.price %>)円</h4>
+			<!--小数点を切り捨てる/ &nbsp;は空白文字-->
+			<h4><%= (BigDecimal(@item.price) * BigDecimal("1.1")).ceil %>&nbsp;(<%= @item.price %>)円</h4>
 		</span>
 	</div>
 
