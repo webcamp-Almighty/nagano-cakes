@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_end_user!
+  #before_action :authenticate_end_user!,except[:show]
 
   def index
-    @order_items = OrderItem.all
+    @orders = Order.where(end_user_id: current_end_user.id)
   end
 
   def new
@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
+    #@order_items = @orders.order_items
+     @order_items = @order.order_items
   end
 
   def detail

@@ -33,7 +33,7 @@
               <% end %>
           </td>
           <td><%= link_to "編集ページ", edit_admins_end_user_path, class: "btn btn-primary" %></td>
-          <td><%= link_to "未実装", "#", class: "btn btn-primary" %></td>
+          <td><%= link_to "注文履歴一覧", order_path(@end_user.id), class: "btn btn-primary" %></td>
         </tr>
       <tbody>
       </table>
