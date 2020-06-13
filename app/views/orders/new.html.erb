@@ -18,7 +18,8 @@
 
 	  <div class="form-group">
 	    <div class="col-xs-6 col-xs-offset-2">
-		    <%= f.radio_button :payment_method, :credit_card %>クレジットカード
+	    	<!-- クレジットカードが選択済の状態で表示される -->
+		    <%= f.radio_button :payment_method, :credit_card, checked: true %>クレジットカード
 			<%#= f.label :payment_method, "クレジットカード", {value: :"0", style: "display: inline-block;"} %><br />
 			<%= f.radio_button :payment_method, :bank_transfer %>銀行振込
 			<%#= f.label :payment_method, "銀行振込", {value: 1, style: "display: inline-block;"} %>
@@ -37,7 +38,7 @@
 	    	<!--ラジオボタン1の情報を送信するだけ-->
 	    	<!--住所データはend_userモデルから取ってこれる-->
 	    	<!-- f.radio_buttonという記述でないことに注意-->
-	    	<%= radio_button_tag :radio_button, 1 %>
+	    	<%= radio_button_tag :radio_button, 1, checked: true %>
 	    	<%= f.label :address, 'ご自身の住所', style:"display: inline-block;" %><br />
             <%= "〒#{current_end_user.postal_code}  #{current_end_user.address}  #{current_end_user.last_name} #{current_end_user.first_name}" %>
 	    </div>
