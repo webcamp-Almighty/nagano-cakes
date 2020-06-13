@@ -16,20 +16,11 @@
 					<%= attachment_image_tag(item, :image, fallback: 'no_image.jpg', size: '220x165') %><br>
 					<%= item.name %><br>
 					￥<%= converting_to_jpy(item.price) %><br>
-					<!-- いいな -->
-                    <% if end_user_signed_in? && item.favorited_by?(current_end_user) %><!-- ログインしてて、いいねしてる時 -->
-                      <%= link_to item_favorites_path(item), method: :delete do %>
-                      <span class="glyphicon glyphicon-star"><%= item.favorites.count%></span>
-                    <% end %>
 
-                    <% elsif !end_user_signed_in? %><!-- ログインしてない時 -->
-                      <span class="glyphicon glyphicon-star"><%= item.favorites.count%></span>
-
-                    <% else %>
-                      <%= link_to item_favorites_path(item), method: :post do %><!-- ログインしてて、いいねしてない時 -->
-                      <span class="glyphicon glyphicon-star-empty"><%= item.favorites.count %></span>
-                    <% end %>
-				<% end %>
+					<!-- いいね,ajax -->
+					<div id="likes_buttons_<%= item.id %>">
+						<%= render partial: 'favorites/favorite', locals: { item:item} %>
+					</div>
 				<% end %>
 			</div>
 			<% end %>
