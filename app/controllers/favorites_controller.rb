@@ -1,17 +1,21 @@
 class FavoritesController < ApplicationController
 	def create
-            item = Item.find(params[:item_id])
-            favorite = Favorite.new()
-            favorite.end_user_id = current_end_user.id
-            favorite.item_id = item.id
-            favorite.save
-            redirect_to items_path
+            @item = Item.find(params[:item_id])
+            favorite = Favorite.new(end_user_id: current_end_user.id, item_id: params[:item_id])
+             favorite.save
+            # favorite = Favorite.new()
+            # favorite.end_user_id = current_end_user.id
+            # favorite.item_id = item.id
+            # favorite.save
+            # redirect_to items_path
         end
         def destroy
-            item = Item.find(params[:item_id])
-            favorite = current_end_user.favorites.find_by(item_id: item.id)
+            @item = Item.find(params[:item_id])
+            favorite = current_end_user.favorites.find_by(item_id: params[:item_id])
             favorite.destroy
-            redirect_to items_path
+            # favorite = current_end_user.favorites.find_by(item_id: item.id)
+            # favorite.destroy
+            # redirect_to items_path
         end
 end
 
