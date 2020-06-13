@@ -5,6 +5,7 @@ class Admins::OrdersController < ApplicationController
   def index
     @orders = Order.all
     @order_items = OrderItem.all
+    @orders = Order.page(params[:page]).per(15)
   end
 
   def show

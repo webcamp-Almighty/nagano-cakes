@@ -12,34 +12,34 @@
     </thead>
     <tbody>
 
-        <% @order_items.each do |order_item| %>
+        <% @orders.each do |order| %>
         <tr>
             <td><!--日本時間で表示する-->
-                <%= order_item.created_at.to_s(:datetime_jp) %>
+                <%= order.created_at.to_s(:datetime_jp) %>
             </td>
 
             <td><!--配送先-->
-                <%= order_item.order.address %>
+                <%= order.address %>
             </td>
 
-            <td><!--注文商品名-->
+            <td><!--注文に結びついた注文商品の商品名-->
+              <% order.order_items.each do |order_item| %>
                 <%= order_item.item.name %>
+              <% end %>
             </td>
             <!--total_priceを使う, showでも使えるように-->
-            <!--もっといい書き方ありそう、変数でまとめたい-->
             <td><!--支払い金額 = 単価*小計 + 800 -->
-                <%= order_item.tax_item_price * order_item.number + order.shipping_fees %>
+                <%= order.total_price + order.shipping_fees %>
             </td>
 
             <td><!--注文ステータス、入金情報-->
-                <%= order_item.order.order_status_i18n %>
+                <%= order.order_status_i18n %>
             </td>
 
-            <td><%= link_to '表示する', order_path(order_item), class: 'btn btn-default btn-primary' %>
+            <td><%= link_to '表示する', order_path(order), class: 'btn btn-default btn-primary' %>
             </td>
         </tr>
         <% end %>
-
     </tbody>
 
 </table>
