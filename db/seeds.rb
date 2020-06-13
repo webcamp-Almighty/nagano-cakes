@@ -85,7 +85,7 @@ Genre.create!(
 )
 
 
-#3 items
+#5 items
 Item.create!(
   genre_id: 1,
   name: 'メロンシャンティ',
@@ -131,5 +131,28 @@ Item.create!(
   price:100,
   is_soldout: true,
   image:File.open("./app/assets/images/image06.jpg"),
-  introduction: "カラフルで楽しい棒付きキャナディです。"
+  introduction: "カラフルで楽しい棒付きキャンディです。"
   )
+
+
+#書いてみたけど反映されない
+Faker::Config.locale = 'ja'
+
+30.times do |n|
+
+  genre_id = rand(1..4)
+  name = Faker::Dessert.variety
+  price = Faker::Number.number(digits: 3)
+  introduction = '商品説明が入ります。商品説明が入ります。商品説明が入ります。商品説明が入ります。
+  商品説明が入ります。商品説明が入ります。商品説明が入ります。'
+
+  Item.create!(
+  genre_id: genre_id,
+  name: name,
+  price: price,
+  is_soldout: false,
+  introduction: introduction,
+  image:File.open("./app/assets/images/no_image2.jpg")
+  )
+
+end

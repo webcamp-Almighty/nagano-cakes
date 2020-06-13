@@ -23,8 +23,28 @@ class EndUsersController < ApplicationController
     redirect_to root_path
   end
 
+  #追加
+  def edit_password
+    @end_user = EndUser.new
+  end
+
+  def update_password
+    if current_end_user.update_with_password(user_params)
+        redirect_to end_users_path(current_end_user.id)
+      else
+        render :edit_password
+    end
+  end
+
+
   private
   def end_user_params
-  	params.require(:end_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :postal_code)
+  	params.require(:end_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,
+     :email, :postal_code, :address, :telephone_number)
   end
+
+  #パスワード変更用
+  def user_params
+        params.require(:end_user).permit(:password, :password_confirmation, :current_password)
+    end
 end

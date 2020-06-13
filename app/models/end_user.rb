@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :favorites, dependent: :destroy#いいね
 
   #boolean型のバリデーション
   validates :is_deleted, inclusion: { in: [true, false] }
@@ -20,7 +21,7 @@ class EndUser < ApplicationRecord
   validates :postal_code, presence:true
   validates :address, presence:true
 
-
+  #退会処理
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
@@ -32,5 +33,7 @@ class EndUser < ApplicationRecord
   	end
   	total
   end
+
+
 
 end

@@ -1,4 +1,7 @@
 class Admins::HomesController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def top
    @from = Time.now.in_time_zone("Tokyo").beginning_of_day
    @to   = Time.now.in_time_zone("Tokyo").end_of_day

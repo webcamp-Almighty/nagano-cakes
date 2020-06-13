@@ -17,34 +17,34 @@ class CartItemsController < ApplicationController
         @cart_item.update(number: num)
         # numberカラムにnumを入れる。一行で表すと19行目
         # @cart_item.update(number: @cart_item.number + params[:cart_item][:number].to_i)
-        redirect_to cart_items_path, notice: "商品の数量が加算されました。"
+        redirect_to cart_items_path, success: "商品の数量が加算されました。"
       else
         @cart_item.save
-        redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+        redirect_to cart_items_path, success: "カートに商品が追加されました。"
       end
     else
       @item = Item.find(params[:cart_item][:item_id])
       @genres = Genre.all
-      redirect_to request.referer, notice: '数量を選択してください。'
+      redirect_to request.referer, warning: '数量を選択してください。'
     end
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to cart_items_path, notice: "商品の数量が変更されました。"
+    redirect_to cart_items_path, warning: "商品の数量が変更されました。"
   end
 
   def destroy
   	cart_item = CartItem.find(params[:id])
   	cart_item.destroy
-  	redirect_to cart_items_path, notice: "商品が１件、削除されました。"
+  	redirect_to cart_items_path, danger: "商品が１件、削除されました。"
   end
 
   def empty
   	end_user = EndUser.find(current_end_user.id)
   	end_user.cart_items.destroy_all
-  	redirect_to cart_items_path, notice: "カートの商品がすべて削除されました。"
+  	redirect_to items_path, danger: "カートの商品がすべて削除されました。"
   end
 
   private

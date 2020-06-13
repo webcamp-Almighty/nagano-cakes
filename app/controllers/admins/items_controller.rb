@@ -1,5 +1,7 @@
 class Admins::ItemsController < ApplicationController
-
+  
+before_action :authenticate_admin!
+  
   def new
     @item = Item.new
     @items = Item.all
@@ -21,7 +23,6 @@ class Admins::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genre = Genre.find(params[:id])
   end
 
   def edit

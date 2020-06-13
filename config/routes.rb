@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resource :end_users, only: [:show, :edit, :update]
   get '/end_users/confirm'
   put '/end_users/:id/hide' => 'end_users#hide', as: 'end_users_hide'
+  get '/end_users/password' => 'end_users#edit_password'   #パスワード変更用
+  put 'edit_users/password' => 'end_users#update_password'
 
   devise_for :end_users
 
@@ -25,7 +27,9 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   resources :cart_items, only: [:create, :index, :update, :destroy]
   delete '/cart_items_delete' => 'cart_items#empty', as: 'cart_items_delete'

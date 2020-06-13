@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -21,8 +22,17 @@
 
     <div class="container">
 
-      <p id="notice"><%= notice %></p>
-        <!--デバイスでnotice設定されている-->
+
+     <!--送ったフラッシュメッセージをページ上部に表示する-->
+        <div class="row">
+          <div class="col-xs-12">
+            <% flash.each do |key, value| %>
+              <% key = "info" if key == "notice" %>
+              <% key = "danger" if key == "alert" %>
+              <%= content_tag :div, value, class: "alert alert-#{key}" %>
+            <% end %>
+          </div>
+        </div>
 
       <%= yield %>
 
