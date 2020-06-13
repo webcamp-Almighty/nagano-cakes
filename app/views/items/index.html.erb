@@ -1,12 +1,16 @@
- <div class="row">
-	<%= render 'genrebar', genres: @genres %>
-	<!-- ジャンル検索サイドバーの呼び出し -->
+<div class="row">
+	<div class="col-xs-2">
+    <!-- ジャンル検索サイドバーの呼び出し -->
+	  <%= render 'items/genrebar', genres: @genres %>
+	  <%= render 'homes/snslink' %>
+	</div>
+  
 	<div class="col-xs-10">
 		<!-- ジャンルidに紐づく商品を表示する-->
 		<% if params[:genre_id] %>
-			<h2><%= @genre.name %>一覧<span>（全<%= @items.count %>件）</span></h2>
+			<p class="item-index"><%= @genre.name %>一覧<span class="item-count">（全<%= @items.count %>件）</span></p>
 		<% else %>
-			<h2>商品一覧<span>（全<%= @items.count %>件）</span></h2>
+			<p class="item-index">商品一覧<span class="item-count">（全<%= @items.count %>件）</span></p>
 		<% end %>
 
 		<div class="row">

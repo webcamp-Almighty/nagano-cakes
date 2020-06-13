@@ -17,11 +17,11 @@ class Admins::SearchController < ApplicationController
       	#CONCAT last_name + first_name
       	EndUser.where("(last_name || first_name) like ?", content)
       elsif method == 'forward'
-        EndUser.where('last_name LIKE ?', content+'%')
+        EndUser.where("(last_name || first_name) like ?", content+'%')
       elsif method == 'backward'
-        EndUser.where('last_name LIKE ?', '%'+content)
+        EndUser.where("(last_name || first_name) like ?", '%'+content)
       else
-        EndUser.where('last_name LIKE ?', '%'+content+'%')
+        EndUser.where("(last_name || first_name) like ?", '%'+content+'%')
       end
     elsif model == 'item'
       if method == 'perfect'
@@ -35,7 +35,5 @@ class Admins::SearchController < ApplicationController
       end
     end
   end
-
-
 
 end
