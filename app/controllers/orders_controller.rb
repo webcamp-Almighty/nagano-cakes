@@ -2,8 +2,6 @@ class OrdersController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    #@orders = Order.all
-    #@total_price = @shipping_fees + current_end_user.cart_item_sum
     @order_items = OrderItem.all
   end
 
@@ -61,8 +59,6 @@ class OrdersController < ApplicationController
       @order.address = params[:order][:name]
       @order.name = params[:order][:address]
     end
-    #wakarinikui
-    #@total_price = converting_to_jpy(current_end_user.cart_item_sum)
   end
 
   def finish
