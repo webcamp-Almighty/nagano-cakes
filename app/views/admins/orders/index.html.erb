@@ -1,4 +1,4 @@
-<h2>注文履歴一覧</h2>
+<h3>注文履歴一覧</h3>
 
 <table class="table table-bordered">
     <thead>
@@ -24,7 +24,9 @@
         </tr>
         <% end %>
     </tbody>
-    <%= paginate @orders %>
+    <div id="pagination">
+        <%= paginate @orders %>
+    </div>
 </table>
 
 
