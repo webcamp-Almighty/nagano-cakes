@@ -5,7 +5,7 @@
 	  <%= render 'homes/snslink' %>
 	</div>
   
-	<div class="col-xs-10">
+	<div class="col-xs-10 pull-right">
 		<!-- ジャンルidに紐づく商品を表示する-->
 		<% if params[:genre_id] %>
 			<p class="item-index"><%= @genre.name %>一覧<span class="item-count">（全<%= @items.count %>件）</span></p>
