@@ -257,7 +257,7 @@ Faker::Config.locale = 'ja'
   genre_id: genre_id,
   name: name,
   price: price,
-  is_soldout: false,
+  is_soldout: true,
   introduction: introduction,
   image:File.open("./app/assets/images/no_image2.jpg")
   )
