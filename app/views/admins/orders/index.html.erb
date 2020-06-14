@@ -12,8 +12,8 @@
 
     <tbody>
         <% @orders.each do |order| %>
-        <!-- 購入日時 -->
-        <td><%= order.created_at %></td>
+        <!-- 購入日時 日本時間で表示-->
+        <td><%= order.created_at.to_s(:datime_jp) %></td>
         <!-- 購入者 -->
         <td><%= order.end_user.last_name %></td>
         <!-- 購入個数 -->
@@ -26,6 +26,5 @@
     </tbody>
     <%= paginate @orders %>
 </table>
-
 
 
