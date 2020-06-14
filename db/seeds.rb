@@ -242,24 +242,33 @@ Item.create!(
   introduction: "冬にぴったり"
   )
 
+  Item.create!(
+  genre_id: 1,
+  name: 'ぴかケーキ',
+  price: 1000,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image20.jpg"),
+  introduction: "「ピカケーキ」子どもの心をゲットだぜ!!"
+)
+  
 #書いてみたけど反映されない
 Faker::Config.locale = 'ja'
 
-1.times do |n|
+# 1.times do |n|
 
-  genre_id = rand(1..4)
-  name = Faker::Dessert.variety
-  price = Faker::Number.number(digits: 3)
-  introduction = '商品説明が入ります。商品説明が入ります。商品説明が入ります。商品説明が入ります。
-  商品説明が入ります。商品説明が入ります。商品説明が入ります。'
+#   genre_id = rand(1..4)
+#   name = Faker::Dessert.variety
+#   price = Faker::Number.number(digits: 3)
+#   introduction = '商品説明が入ります。商品説明が入ります。商品説明が入ります。商品説明が入ります。
+#   商品説明が入ります。商品説明が入ります。商品説明が入ります。'
 
-  Item.create!(
-  genre_id: genre_id,
-  name: name,
-  price: price,
-  is_soldout: true,
-  introduction: introduction,
-  image:File.open("./app/assets/images/no_image2.jpg")
-  )
+#   Item.create!(
+#   genre_id: genre_id,
+#   name: name,
+#   price: price,
+#   is_soldout: true,
+#   introduction: introduction,
+#   image:File.open("./app/assets/images/no_image2.jpg")
+#   )
 
-end
+# end
