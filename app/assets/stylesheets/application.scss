@@ -21,6 +21,10 @@
    box-sizing: border-box;
 }
 
+#logo {
+  font-family: 'Nothing You Could Do', cursive;
+}
+
 body {
    margin: 0;//ブラウザ間の差を無くす
    padding: 0;//ブラウザ間の差を無くす
@@ -46,7 +50,7 @@ header::after {
 
 h1 {//ロゴの大きさ調整
    margin: 0; padding: 0;
-   font-size: 20px;
+   font-size: 50px;
 }
 
 a {//aタグの文字色と、余計なアンダーラインを消す
@@ -79,7 +83,7 @@ span#link {
 }
 
 .admin-header {
-  background-color: #006c61;  //adminのヘッダー
+  background-color: #ffffff;  //adminのヘッダー
 }
 
 

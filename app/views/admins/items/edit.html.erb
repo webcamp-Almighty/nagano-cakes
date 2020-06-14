@@ -1,12 +1,15 @@
-
-<h1>商品追加</h1>
+<div class="row">
+  <div class="col-md-3 col-md-offset-2">
+    <h3>商品編集</h3>
+  </div>
+</div>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <%= form_with(model: @item, url:admins_item_path(@item), local: true) do |f| %>
         <%= render 'layouts/error_messages', obj: @item %>
 
-        <%= attachment_image_tag(@item, :image, :fill, 200, 200, fallback: 'no_image.jpg', size: '250x200') %>
+        <%= attachment_image_tag(@item, :image, fallback: 'no_image.jpg', size: '250x200') %>
         <%= f.attachment_field :image %>
 
         <%= f.label :商品名 %>
@@ -22,9 +25,13 @@
         <%= f.collection_select :genre_id, Genre.all, :id, :name %></br>
 
         <%= f.label :販売ステータス %>
-        <%= f.radio_button :is_soldout, :"1" %>売り切れ
-        <%= f.radio_button :is_soldout, :"0" %>販売中</br>
-
-        <%= f.submit "追加", class: "btn btn-primary" %>
+        <% if @item.is_soldout == true %>
+            <%= f.radio_button :is_soldout, :"1",{:checked => true} %>売り切れ
+            <%= f.radio_button :is_soldout, :"0" %>販売中</br>
+        <% else %>
+            <%= f.radio_button :is_soldout, :"1" %>売り切れ
+            <%= f.radio_button :is_soldout, :"0",{:checked => true} %>販売中</br>
+        <% end %>
+        <%= f.submit "変更を保存", class: "btn btn-primary pull-right" %>
       <% end %>
     </div>
