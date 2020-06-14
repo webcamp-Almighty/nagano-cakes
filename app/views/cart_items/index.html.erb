@@ -7,7 +7,7 @@
 
 
 <div class="row">
-<table class="col-md-12">
+<table class="col-md-12 , table table-bordered">
 	<thead>
 	<tr>
 		<th>商品名</th>
@@ -52,13 +52,13 @@
 		<%= link_to "買い物を続ける", items_path, class: "btn btn-default btn-primary" %>
 	</div>
 
-	<table class="col-md-2 col-md-offset-10">
+	<table class="col-md-2 col-md-offset-10 ">
 		<tr>
-			<td>合計金額</td>
+			<td><u><b>合計金額</b></u></td>
 			<td>
-				<%= converting_to_jpy(current_end_user.cart_item_sum) %>
+				<b><u><%= converting_to_jpy(current_end_user.cart_item_sum) %></u></b>
 				<!-- cart_item_sumはend_user.rbに定義 -->
-			<td>
+			<td/>
 		</tr>
 	</table>
 </div>

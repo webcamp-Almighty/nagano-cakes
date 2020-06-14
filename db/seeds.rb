@@ -134,11 +134,118 @@ Item.create!(
   introduction: "カラフルで楽しい棒付きキャンディです。"
   )
 
+Item.create!(
+  genre_id: 1,
+  name: 'マイメロケーキ',
+  price: 1500,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image07.jpg"),
+  introduction: "みんな大好き、かわいいマイメロちゃんのケーキです"
+)
+
+Item.create!(
+  genre_id: 1,
+  name: 'キティケーキ',
+  price: 1500,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image09.jpg"),
+  introduction: "みんな大好き、かわいいキティちゃんのケーキです"
+)
+
+Item.create!(
+  genre_id: 2,
+  name:'ぐでたまプリン',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image10.jpg"),
+  introduction: "ぐでたまプリンです"
+  )
+
+Item.create!(
+  genre_id: 2,
+  name:'ポムポムプリン',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image11.jpg"),
+  introduction: "ポムポムプリンです"
+  )
+
+Item.create!(
+  genre_id: 3,
+  name:'サンリオの集い',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image12.jpg"),
+  introduction: "食べると癒されます"
+  )
+
+  Item.create!(
+  genre_id: 3,
+  name:'トトロクッキー',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image13.jpg"),
+  introduction: "昔からの人気商品"
+  )
+
+  Item.create!(
+  genre_id: 3,
+  name:'ポムポムプリンクッキー',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image14.jpg"),
+  introduction: "クッキーです"
+  )
+
+  Item.create!(
+  genre_id: 3,
+  name:'リラックマクッキー',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image15.jpg"),
+  introduction: "中身は..."
+  )
+
+  Item.create!(
+  genre_id: 3,
+  name:'ブイズクッキー',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image16.jpg"),
+  introduction: "みんなちがってみんないい。種類豊富です。"
+  )
+
+  Item.create!(
+  genre_id: 4,
+  name:'団扇飴',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image17.jpg"),
+  introduction: "夏にぴったり"
+  )
+
+  Item.create!(
+  genre_id: 4,
+  name:'小毬飴',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image18.jpg"),
+  introduction: "秋にぴったり"
+  )
+
+  Item.create!(
+  genre_id: 4,
+  name:'飴',
+  price:300,
+  is_soldout: false,
+  image:File.open("./app/assets/images/image19.jpg"),
+  introduction: "冬にぴったり"
+  )
 
 #書いてみたけど反映されない
 Faker::Config.locale = 'ja'
 
-30.times do |n|
+1.times do |n|
 
   genre_id = rand(1..4)
   name = Faker::Dessert.variety
