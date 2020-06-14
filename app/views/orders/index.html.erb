@@ -15,7 +15,7 @@
         <% @orders.each do |order| %>
         <tr>
             <td><!--日本時間で表示する-->
-                <%= order.created_at.to_s(:datetime_jp) %>
+                <%= l order.created_at %>
             </td>
 
             <td><!--配送先-->

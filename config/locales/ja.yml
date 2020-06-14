@@ -21,6 +21,11 @@ ja:
         creat_finish: "製作完了"
 
 
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+
+
 
   faker:
     address:
