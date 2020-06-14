@@ -4,12 +4,10 @@
 	  <%= render 'items/genrebar', genres: @genres %>
 	  <%= render 'homes/snslink' %>
 	</div>
-  
+
 	<div class="col-xs-10">
 		<!-- ジャンルidに紐づく商品を表示する-->
-		
 		<% if params[:genre_id] %>
-		
 			<p class="item-index"><%= @genre.name %>一覧<span class="item-count">（<%= @items.count %>件）</span></p>
 		<% else %>
 		<% @i = Item.all %>
