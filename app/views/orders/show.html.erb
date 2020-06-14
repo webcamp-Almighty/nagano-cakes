@@ -33,10 +33,9 @@
 			<td><%= converting_to_jpy(@order.total_price) %>
 				<%#= converting_to_jpy(BigDecimal(@order.total_price) * BigDecimal("1.1").ceil) %>
 				<%#= converting_to_jpy(@order.total_price) %></td>
-
 			<td><%= @order.shipping_fees %></td>
 
-			<!--コントローラで記述したい-->
+
 			<td><%= converting_to_jpy(@order.total_price + @order.shipping_fees) %></td>
 	    </tr>
 	</table>
