@@ -1,15 +1,40 @@
 <div class="row">
-<div class="col-xs-2">
-  <%= render 'items/genrebar', genres: @genres %>
-  <%= render 'homes/snslink' %>
-</div>
+  <div class="col-xs-2">
+    <%= render 'items/genrebar', genres: @genres %>
+    <%= render 'homes/snslink' %>
+  </div>
 
   <div class="col-xs-4">
-    <div class="panel panel-defaul">
-      <p class="jquery">ようこそ、NaganoCakeへ！</br>
+    <div class="panel panel-defaul top-message">
+      <p class="top-text">ようこそ、NaganoCakeへ！</br>
       このサイトは、ケーキ販売のECサイトになります。</br>
       会員でない方も商品の閲覧はできますが、</br>
       購入には会員登録が必要になります。</p>
+    </div>
+
+    <div class="panel panel-default topic-message">
+      <div class="panel-heading">
+        <h4 class="text-center">お知らせ</h4>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>・商品に「いいね」ができます！（2020/6/15更新 New！）</td>
+          </tr>
+          <tr>
+            <td>・新商品を発売しました！（2020/5/26更新）</td>
+          </tr>
+          <tr>
+            <td>・コラムを更新しました！（2020/5/16更新）</td>
+          </tr>
+          <tr>
+            <td>・YouTube始めました！（2020/4/16更新）</td>
+          </tr>
+          <tr>
+            <td> 過去のお知らせを見る</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -20,7 +45,6 @@
         <div class="image2"></div>
         <div class="image3"></div>
         <div class="image4"></div>
-        <div class="image5"></div>
       </div>
     </div>
   </div>
@@ -44,10 +68,4 @@
         <%= link_to 'もっと見る>', items_path %>
       </div>
   </div>
-  <div class="row">
-      <div class="col-xs-6 col-offset-3">
-        <!--ページネーション機能ついか-->
-        <%= paginate @items %>
-      </div>
-    </div>
 </div>

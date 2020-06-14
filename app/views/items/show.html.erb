@@ -17,7 +17,7 @@
 
 		<p><%= @item.introduction %></p><br>
 
-		<h4>¥<%= converting_to_jpy(@item.price) %>(税込)<h4><br>
+		<h4>¥<%= converting_to_jpy((BigDecimal(@item.price) * BigDecimal("1.1")).ceil) %>(税込)<h4><br>
 
 		<!--カートに入れる.ボタンの位置は右端に調整-->
 		<div class="pull-right">

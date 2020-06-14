@@ -30,8 +30,9 @@
 			<th>配送料</th>
 			<th>ご請求額</th>
 	    </tr>
-	    <tr><!--total_priceについて、orderモデルで記述-->
-			<td><%= converting_to_jpy(@order.total_price) %></td>
+			<td><%= converting_to_jpy(@order.total_price) %>
+				<%#= converting_to_jpy(BigDecimal(@order.total_price) * BigDecimal("1.1").ceil) %>
+				<%#= converting_to_jpy(@order.total_price) %></td>
 
 			<td><%= @order.shipping_fees %></td>
 
@@ -51,7 +52,7 @@
 	  <thead class="thead-dark"><!--色が変わらない-->
 	    <tr>
 			<th>商品</th>
-			<th>単価（税込</th>
+			<th>単価（税込）</th>
 			<th>個数</th>
 			<th>小計</th>
 	    </tr>
@@ -60,9 +61,10 @@
 	    <% @order_items.each do |order_item| %>
 	    <tr>
 			<td><%= order_item.item.name %></td>
-			<td><%= order_item.tax_item_price %></td>
+			<td><%#= converting_to_jpy(@order.total_price + @order.shipping_fees) %>
+				<%= converting_to_jpy((BigDecimal(order_item.tax_item_price) * BigDecimal("1.1")).ceil) %></td>
 			<td><%= order_item.number %></td>
-			<td><%= order_item.tax_item_price * order_item.number %></td>
+			<td><%= converting_to_jpy((BigDecimal(order_item.tax_item_price) * BigDecimal("1.1")).ceil * order_item.number) %></td>
 		</tr>
 		<% end %>
 	    </tr>

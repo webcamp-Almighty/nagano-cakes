@@ -19,9 +19,9 @@
 	    		<%= cart_item.item.name %>
 	    	</td>
 
-			<td><%= converting_to_jpy(cart_item.item.price) %></td>
+			<td><%= converting_to_jpy((BigDecimal(cart_item.item.price) * BigDecimal("1.1")).ceil) %></td>
 			<td><%= cart_item.number %></td>
-			<td><%= converting_to_jpy(cart_item.item.price * cart_item.number) %></td>
+			<td><%= converting_to_jpy((BigDecimal(cart_item.item.price) * BigDecimal("1.1")).ceil *  cart_item.number) %></td>
 	    </tr>
 	    <% end %>
 	  </tbody>
@@ -37,7 +37,7 @@
 	    <tr>
 	    	<th>商品合計</th>
 			<td><!--商品合計-->
-			  <%= converting_to_jpy(current_end_user.cart_item_sum) %>
+			  <%= converting_to_jpy((BigDecimal(current_end_user.cart_item_sum) * BigDecimal("1.1")).ceil) %>
 			</td>
 		</tr>
 		<tr>
@@ -45,7 +45,7 @@
 			<td><!--請求金額=送料+合計金額-->
 				<!--total_priceカラムの意義とは-->
 				<%#= @total_price %>
-			  <%= converting_to_jpy(@order.shipping_fees + current_end_user.cart_item_sum) %>
+			  <%= converting_to_jpy(@order.shipping_fees + (BigDecimal(current_end_user.cart_item_sum) * BigDecimal("1.1")).ceil) %>
 			</td>
 	    </tr>
 	</table>

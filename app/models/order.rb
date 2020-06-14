@@ -26,7 +26,8 @@ class Order < ApplicationRecord
   def total_price
     total = 0
     order_items.each do |order_item|
-      total += order_item.tax_item_price * order_item.number
+      # total += order_item.tax_item_price * order_item.number
+      total += (BigDecimal(order_item.tax_item_price) * BigDecimal("1.1") * BigDecimal(order_item.number)).ceil
     end
     total
   end
