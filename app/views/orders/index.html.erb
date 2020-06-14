@@ -29,7 +29,9 @@
             </td>
             <!--total_priceを使う, showでも使えるように-->
             <td><!--支払い金額 = 単価*小計 + 800 -->
-                <%= order.total_price + order.shipping_fees %>
+                <%#= order.total_price + order.shipping_fees %>
+                <%#= converting_to_jpy(order.shipping_fees + (BigDecimal(order.total_price) * BigDecimal("1.1")).ceil) %>
+                <%= converting_to_jpy(order.total_price + order.shipping_fees) %>
             </td>
 
             <td><!--注文ステータス、入金情報-->

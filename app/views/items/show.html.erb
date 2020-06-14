@@ -17,13 +17,13 @@
 
 		<p><%= @item.introduction %></p><br>
 
-		<h4>¥<%= converting_to_jpy(@item.price) %>(税込)<h4><br>
+		<h4>¥<%= converting_to_jpy((BigDecimal(@item.price) * BigDecimal("1.1")).ceil) %>(税込)<h4><br>
 
 		<!--カートに入れる.ボタンの位置は右端に調整-->
 		<div class="pull-right">
 		<%= form_for(@cart_item, url: '/cart_items') do |f| %>
 			<%= f.hidden_field :item_id, :value => @item.id %>
-			<%= f.number_field :number, placeholder: '個数選択' %>
+			<%= f.number_field :number, placeholder: '個数選択', min: 1 %>
 			<%#= f.select :number, [['個数選択',0],['１個',1],['２個',2],['３個',3],['４個',4],['５個',5]] %>
 			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 		<% end %>
