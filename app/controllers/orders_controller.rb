@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-  #before_action :authenticate_end_user!,except[:show]
+  before_action :authenticate_end_user!
 
   def index
-    @orders = Order.where(end_user_id: current_end_user.id)
+      @orders = Order.where(end_user_id: current_end_user.id)
   end
-
+  
   def new
     @order = Order.new
   end
