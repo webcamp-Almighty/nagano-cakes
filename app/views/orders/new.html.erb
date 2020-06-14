@@ -51,7 +51,7 @@
 	    	<%= radio_button_tag :radio_button, 2 %>
 	    	<%= f.label :address, '登録先住所から選択',style:'display: inline-block;' %><br />
 	    	<!--セレクトボタン-->
-	    	<!--deliveryモデルに定義-->
+	    	<!--deliveryモデルに定義されている情報を取ってくる-->
 	    	<%= f.collection_select :delivery_id, current_end_user.deliveries, :id, :view_address_and_name,:include_blank => true %>
 	  	</div>
 	  </div>

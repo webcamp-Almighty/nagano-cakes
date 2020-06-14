@@ -51,7 +51,8 @@ class OrdersController < ApplicationController
       @order.name = current_end_user.last_name
       #@order.first_name = current_end_user.first_name
     elsif params[:radio_button] == "2"
-      if params[:delivery_id]
+      if params[:order][:delivery_id]
+
         @delivery = Delivery.find(params[:order][:delivery_id]) #記述
         @order.postal_code = @delivery.postal_code
         @order.address = @delivery.address
@@ -60,7 +61,7 @@ class OrdersController < ApplicationController
         redirect_to new_order_path, danger: 'お届け先情報を選択してください'
       end
     else
-      if params[:address]
+      if params[:order][:address].present? && params[:order][:postal_code].present? && params[:order][:name].present?
         @order.postal_code = params[:order][:postal_code]
         @order.address = params[:order][:name]
         @order.name = params[:order][:address]
