@@ -24,7 +24,10 @@ $ rails s -b 0.0.0.0<br>
 
 管理者用アカウント  
 メールアドレス：admin@admin.com<br>
-パスワード：adminadmin
+パスワード：adminadmin  
+管理者用のログインURL: https://locallhost:3000/admins/sign_in  
+
+こちらのURLからアクセスしてご覧ください。
 
 顧客用アカウント  
 メールアドレス：user@admin.com<br>
