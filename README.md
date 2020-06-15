@@ -2,6 +2,11 @@
 
 長野県にある小さなな洋菓子店「ながのCAKE」の商品を通販するためのECサイト.
 
+##背景
+元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。
+InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至った。
+
+
 #使い方
 インストール方法
 
@@ -105,6 +110,22 @@ $ rails s -b 0.0.0.0<br>
 10. ジャンル設定機能
 ・ジャンルの追加・変更・ステータス切り替えを行うことができる。
 
+
+##導入したgem
+
+gem 'devise'  
+gem 'bootstrap-sass', '~> 3.4.1'  
+gem 'jquery-rails'  
+gem "refile", require: "refile/rails", github: 'manfe/refile'  
+gem "refile-mini_magick"  
+gem 'kaminari','~> 1.2.1'  
+gem 'pry-byebug'  
+gem 'enum_help'  
+gem 'rails-i18n'  
+gem 'faker'  
+gem 'jp_prefecture'  
+gem 'font-awesome-rails'  
+gem 'kaminari-bootstrap', '~> 3.0.1'  
 
  
 * 作成者
