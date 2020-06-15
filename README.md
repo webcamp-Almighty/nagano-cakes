@@ -140,7 +140,7 @@ gem 'font-awesome-rails'
 gem 'kaminari-bootstrap', '~> 3.0.1'  
 
  
-* 作成者  
+*作成者  
 くりちゃん  
 たかさん  
 ずーみん  
