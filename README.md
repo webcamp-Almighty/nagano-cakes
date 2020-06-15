@@ -5,8 +5,8 @@
 #使い方
 インストール方法
 
-$ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH)<br>
-or $ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)<br>
+$ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH) or<br>
+$ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)<br>
 $ cd nagano-cake<br>
 $ bundle install<br>
 $ rails db:migrate<br>
