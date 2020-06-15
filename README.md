@@ -121,24 +121,6 @@ $ rails s -b 0.0.0.0<br>
 
 10. ジャンル設定機能  
 ・ジャンルの追加・変更・ステータス切り替えを行うことができる。  
-
-
-*導入したgem
-
--gem 'devise'  
--gem 'bootstrap-sass', '~> 3.4.1'<br>
--gem 'jquery-rails'  
--gem "refile", require: "refile/rails", github: 'manfe/refile'<br>
--gem "refile-mini_magick"  
--gem 'kaminari','~> 1.2.1'<br>
--gem 'pry-byebug'  
--gem 'enum_help'  
--gem 'rails-i18n'  
--gem 'faker'  
--gem 'jp_prefecture'  
--gem 'font-awesome-rails'  
--gem 'kaminari-bootstrap', '~> 3.0.1'  
-
  
 *作成者  
 くりちゃん  
