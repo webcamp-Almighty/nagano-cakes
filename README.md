@@ -113,19 +113,19 @@ $ rails s -b 0.0.0.0<br>
 
 *導入したgem
 
-gem 'devise'  
-gem 'bootstrap-sass', '~> 3.4.1'  
-gem 'jquery-rails'  
-gem "refile", require: "refile/rails", github: 'manfe/refile'  
-gem "refile-mini_magick"  
+gem 'devise'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'  
-gem 'pry-byebug'  
-gem 'enum_help'  
-gem 'rails-i18n'  
-gem 'faker'  
-gem 'jp_prefecture'  
-gem 'font-awesome-rails'  
-gem 'kaminari-bootstrap', '~> 3.0.1'  
+gem 'pry-byebug'
+gem 'enum_help'
+gem 'rails-i18n'
+gem 'faker'
+gem 'jp_prefecture'
+gem 'font-awesome-rails'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
  
 * 作成者
