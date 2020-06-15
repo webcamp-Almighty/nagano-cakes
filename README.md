@@ -5,23 +5,24 @@
 #使い方
 インストール方法
 
-$ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH)
-or $ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)
-$ cd nagano-cake
-$ bundle install
-$ rails db:migrate
-$ rails db:seed
-$ rails s -b 0.0.0.0
+$ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH)<br>
+or $ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)<br>
+$ cd nagano-cake<br>
+$ bundle install<br>
+$ rails db:migrate<br>
+$ rails db:seed<br>
+$ rails s -b 0.0.0.0<br>
 
 
 #テスト方法
 ローカルサーバーにアクセスしてご覧ください。
 
 管理者用アカウント
-メールアドレス：admin@admin.com
+メールアドレス：admin@admin.com<br>
 パスワード：adminadmin
 
-顧客用アカウント メールアドレス：user0@admin.com
+顧客用アカウント 
+メールアドレス：user0@admin.com<br>
 パスワード：adminadmin
 
 を入力してログインしてください。
