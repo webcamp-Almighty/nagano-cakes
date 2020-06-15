@@ -27,7 +27,7 @@ $ rails s -b 0.0.0.0<br>
 パスワード：adminadmin
 
 顧客用アカウント  
-メールアドレス：user0@admin.com<br>
+メールアドレス：user@admin.com<br>
 パスワード：adminadmin
 
 を入力してログインしてください。
