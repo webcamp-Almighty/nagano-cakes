@@ -2,6 +2,7 @@
 
 長野県にある小さなな洋菓子店「ながのCAKE」の商品を通販するためのECサイト.
 
+
 #使い方
 インストール方法
 $ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH)
@@ -11,6 +12,7 @@ $ bundle install
 $ rails db:migrate
 $ rails db:seed
 $ rails s -b 0.0.0.0
+
 
 #テスト方法
 ローカルサーバーにアクセスしてご覧ください。
@@ -71,7 +73,7 @@ $ rails s -b 0.0.0.0
 ・注文の詳細(注文商品や個数など)を確認することができる。
 
 
-管理者
+##管理者
 1. ログイン機能
 ・メールアドレス、パスワードでログインできる。 ・ログイン時のみ利用できる機能が利用できるようになる。
 
