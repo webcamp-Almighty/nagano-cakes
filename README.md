@@ -8,7 +8,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 
 # 使い方  
-インストール方法
+*インストール方法
 
 $ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH) or<br>
 $ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)<br>
