@@ -22,11 +22,11 @@ $ rails s -b 0.0.0.0<br>
 #テスト方法
 ローカルサーバーにアクセスしてご覧ください。
 
-管理者用アカウント
+管理者用アカウント  
 メールアドレス：admin@admin.com<br>
 パスワード：adminadmin
 
-顧客用アカウント 
+顧客用アカウント  
 メールアドレス：user0@admin.com<br>
 パスワード：adminadmin
 
