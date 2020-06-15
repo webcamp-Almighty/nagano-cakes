@@ -2,9 +2,9 @@
 
 長野県にある小さなな洋菓子店「ながのCAKE」の商品を通販するためのECサイト.
 
-
 #使い方
 インストール方法
+
 $ git clone git@github.com:webcamp-Almighty/nagano-cakes.git(SSH)
 or $ git clone https://github.com/webcamp-Almighty/nagano-cakes.git (HTTPS)
 $ cd nagano-cake
